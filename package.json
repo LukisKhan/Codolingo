@@ -1,0 +1,19 @@
+{
+  "name": "codolingo",
+  "version": "1.0.0",
+  "description": "Coding fun",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LukisKhan/Codolingo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LukisKhan/Codolingo/issues"
+  },
+  "homepage": "https://github.com/LukisKhan/Codolingo#readme"
+}
