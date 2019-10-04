@@ -1,19 +1,25 @@
 # Codolingo
 
-BACKGROUND AND OVERVIEW
+## BACKGROUND AND OVERVIEW
+Learn coding without a keyboard or setup, anywhere
+
 Duolingo for coding
-FUNCTIONALITY AND MVP
+
+## FUNCTIONALITY AND MVP
 User Profiles
 Lessons / Courses
-    Question, E
+Question, Answers
 Stats and Goals
 REPL
 Subscription
-TECHNOLOGIES
+Languages: Ruby, JS, Python, SQL/GraphQL
+Bonuses: Random questions
+
+## TECHNOLOGIES
 GraphQL
 Express
 React
 Apollo
 Docker
-WEEKEND
-WORK BREAKDOWN
+
+## WEEKEND WORK BREAKDOWN
