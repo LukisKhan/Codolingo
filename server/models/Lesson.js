@@ -10,10 +10,12 @@ const LessonSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "questions"
   },
-  course: {
-    type: Schema.Types.ObjectId,
-    ref: "courses"
-  }
+  courses: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "courses"
+    }
+  ],
 });
 
 LessonSchema.statics.findQuestions = function (lessonId) {

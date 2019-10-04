@@ -27,7 +27,7 @@ CourseSchema.statics.addLesson = function (courseId, lessonId) {
   return Course.findById(courseId).then(course => {
     return Lesson.findById(lessonId).then(lesson => {
       course.lessons.push(lesson);
-      lesson.course.push(lesson);
+      lesson.courses.push(lesson);
 
       return Promise.all([course.save(), lesson.save()]).then(
         ([course, lesson]) => course

@@ -115,7 +115,7 @@ const mutation = new GraphQLObjectType({
         title: { type: new GraphQLNonNull(GraphQLString) }
       },
       resolve(parent, args) {
-        return register(args);
+        return new Lesson(args).save();
       }
     },
     // Question Mutations
