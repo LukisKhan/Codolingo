@@ -7,11 +7,17 @@ const CourseSchema = new Schema({
         required: true
     },
     lessons: [
-          {
-            type: Schema.Types.ObjectId,
-            ref: "lesson"
-          }
-      ]
+        {
+          type: Schema.Types.ObjectId,
+          ref: "lesson"
+        }
+    ]
 });
 
-module.exports = mongoose.model("course", CourseSchema);
+CourseSchema.statics.findLessons = function (courseId) {
+  return this.findById(courseId)
+    .populate("lessons")
+    .then(course => course.lessons);
+}
+
+module.exports = mongoose.model("courses", CourseSchema);

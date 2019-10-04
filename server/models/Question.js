@@ -7,11 +7,17 @@ const QuestionSchema = new Schema({
     required: true
   },
   answerChoices: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "answer"
-    }
+      {
+        type: Schema.Types.ObjectId,
+        ref: "answers"
+      }
   ]
 });
+
+QuestionSchema.statics.findAnswers = function (questionId) {
+  return this.findById(questionId)
+    .populate("answers")
+    .then(question => question.answerChoices);
+}
 
 module.exports = mongoose.model("questions", QuestionSchema);

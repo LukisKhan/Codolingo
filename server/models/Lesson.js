@@ -7,9 +7,16 @@ const LessonSchema = new Schema({
     required: true
   },
   questions: {
-    type: Array,
+    type: Schema.Types.ObjectId,
     ref: "questions"
   },
 });
+
+LessonSchema.statics.findQuestions = function (lessonId) {
+  return this.findById(lessonId)
+    .populate("questions")
+    .then(lesson => lesson.questions);
+}
+
 
 module.exports = mongoose.model("lessons", LessonSchema);
