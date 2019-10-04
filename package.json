@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/LukisKhan/Codolingo/issues"
   },
-  "homepage": "https://github.com/LukisKhan/Codolingo#readme"
+  "homepage": "https://github.com/LukisKhan/Codolingo#readme",
+  "dependencies": {
+    "express-graphql": "^0.9.0",
+    "graphql": "^14.5.8"
+  }
 }
