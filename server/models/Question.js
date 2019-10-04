@@ -11,6 +11,12 @@ const QuestionSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "answers"
       }
+  ],
+  lessons: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "lessons"
+    }
   ]
 });
 

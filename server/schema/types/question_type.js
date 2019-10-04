@@ -12,7 +12,14 @@ const QuestionType = new GraphQLObjectType({
     answerChoices: { 
       type: new GraphQLList(require("./answer_type")),
       resolve(parentValue) {
-        return QuestionType.findAnswers(parentValue._id);
+        return Question.findAnswers(parentValue._id);
+      }
+    },
+    lessons: {
+      type: new GraphQLList(require("./lesson_type")),
+      resolve(parentValue) {
+        return Question.findById(parentValue.id)
+          .populate("lessons");
       }
     }
   })

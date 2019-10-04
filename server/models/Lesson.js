@@ -10,6 +10,10 @@ const LessonSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "questions"
   },
+  course: {
+    type: Schema.Types.ObjectId,
+    ref: "courses"
+  }
 });
 
 LessonSchema.statics.findQuestions = function (lessonId) {
@@ -18,5 +22,10 @@ LessonSchema.statics.findQuestions = function (lessonId) {
     .then(lesson => lesson.questions);
 }
 
+LessonSchema.statics.findCourse = function (courseId) {
+    return this.findById(courseId)
+    .populate("courses")
+    .then(lesson => lesson.course);
+}
 
 module.exports = mongoose.model("lessons", LessonSchema);

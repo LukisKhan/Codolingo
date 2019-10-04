@@ -12,7 +12,7 @@ const CourseType = new GraphQLObjectType({
         lessons: {
           type: new GraphQLList (require("./lesson_type")),
           resolve(parentValue) {
-            return CourseType.findLessons(parentValue._id);
+            return Course.findLessons(parentValue._id);
           }
         }
     })

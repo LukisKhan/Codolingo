@@ -9,7 +9,7 @@ const CourseSchema = new Schema({
     lessons: [
         {
           type: Schema.Types.ObjectId,
-          ref: "lesson"
+          ref: "lessons"
         }
     ]
 });
@@ -18,6 +18,22 @@ CourseSchema.statics.findLessons = function (courseId) {
   return this.findById(courseId)
     .populate("lessons")
     .then(course => course.lessons);
+}
+
+CourseSchema.statics.addLesson = function (courseId, lessonId) {
+  const Course = mongoose.model("courses");
+  const Lesson = mongoose.model("lessons");
+
+  return Course.findById(courseId).then(course => {
+    return Lesson.findById(lessonId).then(lesson => {
+      course.lessons.push(lesson);
+      lesson.course.push(lesson);
+
+      return Promise.all([course.save(), lesson.save()]).then(
+        ([course, lesson]) => course
+      );
+    });
+  });
 }
 
 module.exports = mongoose.model("courses", CourseSchema);
