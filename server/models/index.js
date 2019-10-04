@@ -1,4 +1,4 @@
 require("./User");
-require("./Lesson");
-require("./Question");
-require("./Answer");
+// require("./Lesson");
+// require("./Question");
+// require("./Answer");
