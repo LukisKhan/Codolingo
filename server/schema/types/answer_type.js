@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const graphql = require("graphql");
-const Answer = require("../../models/answer");
+// const Answer = require("../../models/answer");
+const Answer = mongoose.model("answers");
 
 const { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLBoolean } = graphql;
 
