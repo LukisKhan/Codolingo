@@ -36,4 +36,20 @@ CourseSchema.statics.addLesson = function (courseId, lessonId) {
   });
 }
 
+CourseSchema.statics.removeLesson = function (courseId, lessonId) {
+  const Course = mongoose.model("courses");
+  const Lesson = mongoose.model("lessons");
+
+  return Course.findById(courseId).then(course => {
+    return Lesson.findById(lessonId).then(lesson => {
+      course.lessons.pull(lesson);
+      lesson.courses.pull(course);
+
+      return Promise.all([course.save(), lesson.save()]).then(
+        ([course, lesson]) => course
+      );
+    });
+  });
+};
+
 module.exports = mongoose.model("courses", CourseSchema);
