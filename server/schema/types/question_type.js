@@ -9,7 +9,7 @@ const QuestionType = new GraphQLObjectType({
   fields: () => ({
     _id: { type: GraphQLID },
     prompt: { type: GraphQLString },
-    answerChoices: { 
+    answers: { 
       type: new GraphQLList(require("./answer_type")),
       resolve(parentValue) {
         return Question.findAnswers(parentValue._id);

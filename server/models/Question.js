@@ -6,7 +6,7 @@ const QuestionSchema = new Schema({
     type: String,
     required: true
   },
-  answerChoices: [
+  answers: [
       {
         type: Schema.Types.ObjectId,
         ref: "answers"
@@ -23,7 +23,39 @@ const QuestionSchema = new Schema({
 QuestionSchema.statics.findAnswers = function (questionId) {
   return this.findById(questionId)
     .populate("answers")
-    .then(question => question.answerChoices);
+    .then(question => question.answers);
 }
+
+QuestionSchema.statics.addAnswer = function (questionId, answerId) {
+  const Question = mongoose.model("questions");
+  const Answer = mongoose.model("answers");
+
+  return Question.findById(questionId).then(question => {
+    return Answer.findById(answerId).then(answer => {
+      question.answers.push(answer);
+      answer.questions.push(question);
+
+      return Promise.all([question.save(), answer.save()]).then(
+        ([question, answer]) => question
+      )
+    })
+  })
+}
+
+QuestionSchema.statics.removeAnswer = function (questionId, answerId) {
+    const Question = mongoose.model("questions");
+    const Answer = mongoose.model("answers");
+  
+    return Question.findById(questionId).then(question => {
+      return Answer.findById(answerId).then(answer => {
+        question.answers.pull(answer);
+        answer.questions.pull(answer);
+  
+        return Promise.all([question.save(), answer.save()]).then(
+          ([question, answer]) => question
+        );
+      });
+    });
+  };
 
 module.exports = mongoose.model("questions", QuestionSchema);

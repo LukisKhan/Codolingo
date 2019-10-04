@@ -67,7 +67,7 @@ const mutation = new GraphQLObjectType({
       type: UserType,
       args: { id: { type: GraphQLID } },
       resolve(parentValue, { id }) {
-        return User.remove({ _id: id });
+        return User.deleteOne({ _id: id });
       }
     },
     // Courses Mutations
@@ -85,7 +85,7 @@ const mutation = new GraphQLObjectType({
       type: CourseType,
       args: { id: { type: GraphQLID } },
       resolve(parentValue, { id }) {
-        return Course.remove({ _id: id });
+        return Course.deleteOne({ _id: id });
       }
     },
     addLessonToCourse: {
@@ -118,66 +118,87 @@ const mutation = new GraphQLObjectType({
         return new Lesson(args).save();
       }
     },
+    removeLesson: {
+      type: LessonType,
+      args: { id: { type: GraphQLID } },
+      resolve(parentValue, { id }) {
+        return Lesson.deleteOne({ _id: id });
+      }
+    },
+    addQuestionToLesson: {
+      type: CourseType,
+      args: {
+        lessonId: { type: GraphQLID },
+        questionId: { type: GraphQLID },
+      },
+      resolve(parentValue, { lessonId, questionId }) {
+        return Lesson.addQuestion(lessonId, questionId);
+      }
+    },
+    removeQuestionFromLesson: {
+      type: CourseType,
+      args: {
+        lessonId: { type: GraphQLID },
+        questionId: { type: GraphQLID },
+      },
+      resolve(parentValue, { lessonId, questionId }) {
+        return Lesson.removeQuestion(lessonId, questionId);
+      }
+    },
     // Question Mutations
     newQuestion: {
         type: QuestionType,
         args: {
-          prompt: { type: new GraphQLNonNull(GraphQLString) }
+            prompt: { type: new GraphQLNonNull(GraphQLString) }
         },
         resolve(parent, args) {
-          return register(args);
+          return new Question(args).save();
         }
     },
-    addLessonQuestion: {
-        type: LessonType,
+    removeQuestion: {
+      type: QuestionType,
+      args: { id: { type: GraphQLID } },
+      resolve(parentValue, { id }) {
+        return Question.deleteOne({ _id: id });
+      }
+    },
+    addAnswerToQuestion: {
+      type: QuestionType,
         args: {
-            lessonId: { type: GraphQLID },
-          questionId: { type: GraphQLID }
+          questionId: { type: GraphQLID },
+          answerId: { type: GraphQLID },
         },
-        resolve(parentValue, { lessonId, questionId }) {
-          return Lesson.addQuestion(lessonId, questionId);
-        }
+      resolve(parentValue, { questionId, answerId }) {
+        return Question.addAnswer(questionId, answerId);
+      }
+    },
+    removeAnswerFromQuestion: {
+      type: QuestionType,
+      args: {
+          questionId: { type: GraphQLID },
+          answerId: { type: GraphQLID }
       },
-      removeLessonQuestion: {
-        type: LessonType,
-        args: {
-            lessonId: { type: GraphQLID },
-          questionId: { type: GraphQLID }
-        },
-        resolve(parentValue, { lessonId, questionId }) {
-          return Lesson.removeQuestion(lessonId, questionId);
-        }
+      resolve(parentValue, { questionId, answerId }) {
+        return Question.removeAnswer(questionId, answerId);
+      }
     },
     // Answer Mutations
     newAnswer: {
         type: AnswerType,
         args: {
-          answer: { type: new GraphQLNonNull(GraphQLString) }
+            answer: { type: new GraphQLNonNull(GraphQLString) }
         },
         resolve(parent, args) {
-          return register(args);
+            return new Answer(args).save();
         }
     },
-    addLessonAnswer: {
-        type: LessonType,
-        args: {
-            lessonId: { type: GraphQLID },
-          answerId: { type: GraphQLID }
-        },
-        resolve(parentValue, { lessonId, answerId }) {
-          return Lesson.addAnswer(lessonId, answerId);
-        }
-      },
-      removeLessonAnswer: {
-        type: LessonType,
-        args: {
-            lessonId: { type: GraphQLID },
-            answerId: { type: GraphQLID }
-        },
-        resolve(parentValue, { lessonId, answerId }) {
-          return Lesson.removeAnswer(lessonId, answerId);
-        }
+    removeAnswer: {
+      type: AnswerType,
+      args: { id: { type: GraphQLID } },
+      resolve(parentValue, { id }) {
+        return Answer.deleteOne({ _id: id });
       }
+    }
   }
 })
 

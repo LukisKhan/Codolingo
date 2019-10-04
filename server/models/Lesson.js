@@ -6,10 +6,12 @@ const LessonSchema = new Schema({
     type: String,
     required: true
   },
-  questions: {
-    type: Schema.Types.ObjectId,
-    ref: "questions"
-  },
+  questions: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "questions"
+    }
+  ],
   courses: [
     {
       type: Schema.Types.ObjectId,
@@ -29,5 +31,39 @@ LessonSchema.statics.findCourse = function (courseId) {
     .populate("courses")
     .then(lesson => lesson.course);
 }
+
+
+LessonSchema.statics.addQuestion = function (lessonId, questionId) {
+  const Lesson = mongoose.model("lessons");
+  const Question = mongoose.model("questions");
+
+  return Lesson.findById(lessonId).then(lesson => {
+    return Question.findById(questionId).then(question => {
+      lesson.questions.push(question);
+      question.lessons.push(lesson);
+
+      return Promise.all([lesson.save(), question.save()]).then(
+        ([lesson, question]) => lesson
+      );
+    });
+  });
+}
+
+LessonSchema.statics.removeQuestion = function (lessonId, questionId) {
+  const Lesson = mongoose.model("lessons");
+  const Question = mongoose.model("questions");
+
+  return Lesson.findById(lessonId).then(lesson => {
+    return Question.findById(questionId).then(question => {
+      lesson.questions.pull(question);
+      question.lessons.pull(lesson);
+
+      return Promise.all([lesson.save(), question.save()]).then(
+        ([lesson, question]) => lesson
+      );
+    });
+  });
+};
+
 
 module.exports = mongoose.model("lessons", LessonSchema);
