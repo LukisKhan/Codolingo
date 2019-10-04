@@ -7,13 +7,14 @@ Duolingo for coding
 
 ## FUNCTIONALITY AND MVP
 User Profiles 
-Lessons / Courses 
 Question, Answers 
+Lessons / Courses 
 Stats and Goals 
 REPL 
 Subscription  
 Languages: Ruby, JS, Python, SQL/GraphQL 
-Bonuses: Random questions 
+Semi-bonus: Security risk for REPL, course builder UI vs seeding
+Bonuses: Random questions, increasing difficulty, compare languages
 
 ## TECHNOLOGIES
 GraphQL
