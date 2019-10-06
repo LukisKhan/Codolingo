@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
-import { REGISTER_USER } from "../graphql/mutations";
+import { REGISTER_USER } from "../../graphql/mutations";
 
 class Register extends Component {
   constructor(props) {
