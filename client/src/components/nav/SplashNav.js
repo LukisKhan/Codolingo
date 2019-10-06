@@ -27,7 +27,7 @@ const SplashNav = props => {
                   >
                     Logout
                   </button>
-                  <Link to="/products/create">Create a New Product</Link>
+                  <Link to="/courses">Courses</Link>
                 </div>
               );
             } else {
