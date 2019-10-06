@@ -1,17 +1,11 @@
 import React from 'react';
 
-class DashboardNav extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
-  render() {
+const DashboardNav = props => {
     return (
       <div>
 
       </div>
     )
-  }
 }
 
 export default DashboardNav;

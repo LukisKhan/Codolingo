@@ -18,7 +18,7 @@ export const VERIFY_USER = gql`
 `;
 
 export const REGISTER_USER = gql`
-  mutation RegisterUser($name: String, $email: String, $password: String) {
+  mutation RegisterUser($name: String!, $email: String!, $password: String!) {
     register(name: $name, email: $email, password: $password) {
       email
       token

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-import Register from '../auth/Register';
+// import Register from '../auth/Register';
 
 import { Query, ApolloConsumer } from "react-apollo";
 import Queries from "../../graphql/queries";
