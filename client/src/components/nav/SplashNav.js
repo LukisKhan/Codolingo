@@ -1,17 +1,50 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
-class SplashNav extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+import Register from '../auth/Register';
 
-  render() {
+import { Query, ApolloConsumer } from "react-apollo";
+import Queries from "../../graphql/queries";
+const { IS_LOGGED_IN } = Queries;
+
+const SplashNav = props => {
     return (
       <div>
-
+    <ApolloConsumer>
+      {client => (
+        <Query query={IS_LOGGED_IN}>
+          {({ data }) => {
+            if (data.isLoggedIn) {
+              return (
+                <div>
+                  <button
+                    onClick={e => {
+                      e.preventDefault();
+                      localStorage.removeItem("auth-token");
+                      client.writeData({ data: { isLoggedIn: false } });
+                      props.history.push("/");
+                    }}
+                  >
+                    Logout
+                  </button>
+                  <Link to="/products/create">Create a New Product</Link>
+                </div>
+              );
+            } else {
+              return (
+                <div>
+                  <Link to="/">Home</Link>
+                  <Link to="/login">Login</Link>
+                  <Link to="/register">Register</Link>
+                </div>
+              );
+            }
+          }}
+        </Query>
+      )}
+    </ApolloConsumer>
       </div>
-    )
-  }
+  )
 }
 
 export default SplashNav;
