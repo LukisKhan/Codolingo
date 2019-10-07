@@ -14,16 +14,16 @@ import QuestionList from './questions/QuestionList';
 const App = () => {
   return (
     <HashRouter>
-      {/* <SplashNav /> */}
-      {/* <Splash /> */}
+      <SplashNav />
+      <Splash />
       <h1>This is Codolingo</h1>
       <Switch>
         <Route path="/register" component={Register} />
         <AuthRoute exact path="/login" component={Login} routeType="auth" />
-        <AuthRoute path="/" component={DashboardNav} routeType="auth" />
-        <Route path="/" component={Splash} />
         <Route path="/question/list" component={QuestionList} />
         <Route path="/question" component={Question} />
+        <AuthRoute path="/" component={DashboardNav} routeType="auth" />
+        <Route path="/" component={Splash} />
       </Switch>
     </HashRouter>
   )

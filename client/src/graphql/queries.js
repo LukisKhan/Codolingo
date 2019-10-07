@@ -10,7 +10,7 @@ export default {
   FETCH_QUESTIONS: gql`
     query FetchQuestions {
       questions {
-        id
+        _id
         prompt
       }
     }
