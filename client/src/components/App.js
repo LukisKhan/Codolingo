@@ -8,18 +8,22 @@ import Register from './auth/Register';
 import Splash from './splash/splash';
 import SplashNav from './nav/SplashNav';
 import DashboardNav from './nav/DashboardNav';
+import Question from './questions/question';
+import QuestionList from './questions/QuestionList';
 
 const App = () => {
   return (
     <HashRouter>
-      <SplashNav />
-      <Splash />
+      {/* <SplashNav /> */}
+      {/* <Splash /> */}
       <h1>This is Codolingo</h1>
       <Switch>
-        <DashboardNav />
-        <AuthRoute exact path="/login" component={Login} routeType="auth" />
-        <Route path="/register" component={Register} />
-        <Route path="/" component={Splash} />
+        {/* <DashboardNav /> */}
+        {/* <AuthRoute path="/login" component={Login} routeType="auth" /> */}
+        {/* <Route path="/register" component={Register} /> */}
+        <Route path="/question/list" component={QuestionList} />
+        <Route path="/question" component={Question} />
+        {/* <Route path="/" component={Splash} /> */}
       </Switch>
     </HashRouter>
   )

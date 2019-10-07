@@ -85,6 +85,7 @@ const Root = () => {
   return (
     <ApolloProvider client={client}>
       <App />
+      {/* <div>Testing</div> */}
     </ApolloProvider>
   );
 };
