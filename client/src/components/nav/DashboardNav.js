@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 // import Register from '../auth/Register';
 
@@ -48,4 +48,4 @@ const DashboardNav = props => {
     )
 }
 
-export default DashboardNav;
+export default withRouter(DashboardNav);

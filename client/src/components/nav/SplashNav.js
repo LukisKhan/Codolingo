@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 // import Register from '../auth/Register';
 
@@ -28,6 +28,8 @@ const SplashNav = props => {
                         Logout
                       </button>
                       <Link to="/courses">Courses</Link>
+                      <Link to="/courses">Achievements</Link>
+                      <Link to="/courses">Profile</Link>
                     </div>
                   );
                 } else {
@@ -47,4 +49,4 @@ const SplashNav = props => {
   )
 }
 
-export default SplashNav;
+export default withRouter(SplashNav);
