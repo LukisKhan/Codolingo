@@ -8,7 +8,7 @@ import Register from './auth/Register';
 import Splash from './splash/splash';
 import SplashNav from './nav/SplashNav';
 import DashboardNav from './nav/DashboardNav';
-import Question from './questions/question';
+import QuestionCreate from './questions/QuestionCreate';
 import QuestionList from './questions/QuestionList';
 
 const App = () => {
@@ -20,8 +20,8 @@ const App = () => {
       <Switch>
         <Route path="/register" component={Register} />
         <AuthRoute exact path="/login" component={Login} routeType="auth" />
-        <Route path="/question/list" component={QuestionList} />
-        <Route path="/question" component={Question} />
+        <Route path="/questions" component={QuestionList} />
+        <Route path="/question/new" component={QuestionCreate} />
         <AuthRoute path="/" component={DashboardNav} routeType="auth" />
         <Route path="/" component={Splash} />
       </Switch>
