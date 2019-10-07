@@ -3,10 +3,11 @@ import {Link, withRouter} from 'react-router-dom';
 
 import HeaderDropdown from './header_dropdown';
 import Menu from '../../assets/hamburger-menu.svg';
+import Logo from '../assets/codolingo-logo2.png';
 
-import { Query, ApolloConsumer } from "react-apollo";
-import Queries from "../../graphql/queries";
-const { IS_LOGGED_IN } = Queries;
+// import { Query, ApolloConsumer } from "react-apollo";
+// import Queries from "../../graphql/queries";
+// const { IS_LOGGED_IN } = Queries;
 
 class SplashNav extends React.Component {
     constructor(props) {
@@ -38,12 +39,12 @@ class SplashNav extends React.Component {
     render() {
         return(
             <div className="splashNav">
-                <a href="#">Codolingo</a>
+                <a href="#"><img className="logo" src={Logo} alt="logo" /></a>
                 <div className="dropdownButton" onClick={this.handleClick}>
                     <img className="headerMenu" src={Menu} alt="hamburger menu" />
                     {this.state.dropdown && <HeaderDropdown />}
                 </div>
-                <ApolloConsumer>
+                {/* <ApolloConsumer>
                     {client => (
                         <Query query={IS_LOGGED_IN}>
                         {({ data }) => {
@@ -77,11 +78,11 @@ class SplashNav extends React.Component {
                         }}
                         </Query>
                     )}
-                    </ApolloConsumer>
+                    </ApolloConsumer> */}
             </div>
         )
     }
 }
 
-export default withRouter(SplashNav);
+export default SplashNav;
 
