@@ -184,6 +184,16 @@ const mutation = new GraphQLObjectType({
         return Question.removeAnswer(questionId, answerId);
       }
     },
+    updateQuestion: {
+      type: QuestionType,
+        args: {
+          questionId: { type: GraphQLID },
+          prompt: { type: new GraphQLNonNull(GraphQLString) }
+        },
+        resolve(parentValue, { questionId, prompt }) {
+          return Question.updateQuestion(questionId, prompt);
+        }
+    },
     // Answer Mutations
     newAnswer: {
         type: AnswerType,
@@ -200,6 +210,16 @@ const mutation = new GraphQLObjectType({
       args: { id: { type: GraphQLID } },
       resolve(parentValue, { id }) {
         return Answer.deleteOne({ _id: id });
+      }
+    },
+    updateAnswer: {
+      type: AnswerType,
+      args: { 
+        answerId: { type: GraphQLID },
+        answerString: { type: new GraphQLNonNull(GraphQLString) }
+      },
+      resolve(parent, { answerId, answerString }) {
+        return Answer.updateAnswer(answerId, answerString);
       }
     }
   }

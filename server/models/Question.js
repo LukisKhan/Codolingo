@@ -43,19 +43,31 @@ QuestionSchema.statics.addAnswer = function (questionId, answerId) {
 }
 
 QuestionSchema.statics.removeAnswer = function (questionId, answerId) {
-    const Question = mongoose.model("questions");
-    const Answer = mongoose.model("answers");
-  
-    return Question.findById(questionId).then(question => {
-      return Answer.findById(answerId).then(answer => {
-        question.answers.pull(answer);
-        answer.questions.pull(answer);
-  
-        return Promise.all([question.save(), answer.save()]).then(
-          ([question, answer]) => question
-        );
-      });
+  const Question = mongoose.model("questions");
+  const Answer = mongoose.model("answers");
+
+  return Question.findById(questionId).then(question => {
+    return Answer.findById(answerId).then(answer => {
+      question.answers.pull(answer);
+      answer.questions.pull(answer);
+
+      return Promise.all([question.save(), answer.save()]).then(
+        ([question, answer]) => question
+      );
     });
-  };
+  });
+};
+
+QuestionSchema.statics.updateQuestion = function (questionId, prompt) {
+  const Question = mongoose.model("questions");
+
+  return Question.findById(questionId).then(question => {
+    if (question.prompt) {
+      question.prompt = prompt;
+
+      question.save().then(question => question);
+    }
+  })
+}
 
 module.exports = mongoose.model("questions", QuestionSchema);
