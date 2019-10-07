@@ -18,4 +18,16 @@ const AnswerSchema = new Schema({
   }
 });
 
+AnswerSchema.statics.updateAnswer = function (answerId, answerString) {
+  const Answer = mongoose.model("answers");
+
+  return Answer.findById(answerId).then(answer => {
+    if (answer.answer) {
+      answer.answer = answerString;
+
+      answer.save().then(answer => answer);
+    }
+  })
+}
+
 module.exports = mongoose.model("answers", AnswerSchema);

@@ -12,10 +12,9 @@ const QuestionList = () => {
           {({ loading, error, data }) => {
             if (loading) return <p>Loading...</p>;
             if (error) return <p>Error</p>;
-
-            return data.questions.map(({ id, prompt }) => (
-              <li key={id}>
-                <Link to={`/questions/${id}`}>
+            return data.questions.map(({ _id, prompt }) => (
+              <li key={_id}>
+                <Link to={`/questions/${_id}`}>
                   <h4>{prompt}</h4>
                 </Link>
               </li>

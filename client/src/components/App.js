@@ -19,10 +19,10 @@ const App = () => {
       <Switch>
         <Route path="/register" component={Register} />
         <AuthRoute exact path="/login" component={Login} routeType="auth" />
-        <AuthRoute path="/" component={DashboardNav} routeType="auth" />
-        <Route path="/" component={Splash} />
         <Route path="/question/list" component={QuestionList} />
         <Route path="/question" component={Question} />
+        <AuthRoute path="/" component={DashboardNav} routeType="auth" />
+        <Route path="/" component={Splash} />
       </Switch>
     </HashRouter>
   )
