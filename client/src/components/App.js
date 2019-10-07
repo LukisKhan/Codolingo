@@ -14,8 +14,8 @@ import QuestionList from './questions/QuestionList';
 const App = () => {
   return (
     <HashRouter>
-      {/* <SplashNav /> */}
-      {/* <Splash /> */}
+      <SplashNav />
+      <Splash />
       <h1>This is Codolingo</h1>
       <Switch>
         <Route path="/register" component={Register} />

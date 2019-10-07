@@ -7,10 +7,199 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1 {
+  color: #fff;
+}
+
+div {
+  white-space: pre-wrap;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-div {
-  white-space: pre-wrap;
+
+/* Splash nav */
+
+.splashNav {
+  width: 100%;
+  height: 70px;
+  padding: 0 40px;
+  background-color: #235390;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+}
+
+.splashNav a {
+  margin-top: 18px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 44px;
+  font-weight: 700;
+}
+
+.headerMenu {
+  height: 55px;
+  margin-right: 100px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+/* Splash body */
+
+.splashBody {
+  width: 100%;
+  background-color: #235390;
+}
+
+.splashRegisterContainer {
+  height: 625px;
+  background-image: url("star-pattern.svg");
+  display: flex;
+  padding: 40px;
+  align-items: center;
+}
+
+@media (max-width: 1065px) {
+  .splashRegisterContainer {
+    flex-direction: column;
+    padding: 24px 12px;
+  }
+}
+
+.planet {
+  height: 360px;
+  min-width: 360px;
+  /* position: relative;
+  top: 140px; */
+}
+
+@media (max-width: 1065px) {
+  .planet {
+    height: 192px;
+    min-width: 192px;
+    width: 192px;
+  }
+}
+
+.splashRegister {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto 48px;
+}
+
+@media (max-width: 1065px) {
+  .splashRegister {
+    margin: 12px auto 0;
+    max-width: 600px;
+    width: 100%;
+  }
+}
+
+.splashRegister button {
+  width: 315px;
+  padding: 16px 24px;
+  border-radius: 16px;
+  outline: none;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.splashRegister button:hover {
+  filter: brightness(105%);
+}
+
+.splashRegister button:active {
+  position: relative;
+  top: 2px;
+  border-bottom-width: 0;
+}
+
+.signupButton {
+  background-color: rgb(88,167,0);
+  border-width: 0 0 4px;
+  border-color: #77dd03;
+}
+
+.signinButton {
+  margin-top: 12px;
+  border-width: 2px 2px 4px;
+  background-color: #235390;
+  border-color: rgba(0,0,0,.25);
+}
+
+.dropdownButton {
+  position: relative;
+}
+
+.headerDropdown {
+  position: absolute;
+  right: 80px;
+  width: 280px;
+  border: 2px solid #e5e5e5;
+  border-radius: 15px;
+  background-color: #fff;
+  color: #3c3c3c;
+  font-size: 20px;
+}
+
+.dropdownTriangle {
+  position: relative;
+  bottom: 12px;
+  left: 230px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid #fff;
+}
+
+.headerDropdown ul {
+  width: 100%;
+  list-style-type: none;
+  padding-inline-start: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.headerDropdown ul li {
+  padding: 12px 24px;
+  font-weight: 700;
+  color: #4b4b4b;
+  cursor: pointer;
+}
+
+.dropdownItem:first-child {
+  padding-top: 0;
+}
+
+.dropdownItem:not(:first-child) {
+  border-top: 2px solid #e5e5e5;
+}
+
+.splashPromotion {
+  height: 200px;
+  background-color: white;
+  text-align: center;
+}
+
+/* Splash footer */
+.splashFooter {
+  /* height: 1290px; */
+  padding: 60px;
+  background-color: #235390;
+  background-image: url("star-pattern.svg");
+  text-align: center;
+}
+
+.footerLinks {
+  border-top: 2px solid hsla(0,0%,100%,.2);
 }
