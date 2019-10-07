@@ -7,4 +7,12 @@ export default {
       isLoggedIn @client
     }
   `,
+  FETCH_QUESTIONS: gql`
+    query FetchQuestions {
+      questions {
+        id
+        prompt
+      }
+    }
+  `,
 };

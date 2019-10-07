@@ -26,3 +26,12 @@ export const REGISTER_USER = gql`
     }
   }
 `;
+
+export const NEW_QUESTION = gql`
+  mutation NewQuestion($prompt: String!) {
+    newQuestion(prompt: $prompt) {
+      prompt
+      id
+    }
+  }
+`;

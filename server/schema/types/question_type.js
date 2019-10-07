@@ -20,7 +20,8 @@ const QuestionType = new GraphQLObjectType({
       type: new GraphQLList(require("./lesson_type")),
       resolve(parentValue) {
         return Question.findById(parentValue.id)
-          .populate("lessons");
+          .populate("lessons")
+          .then(question => question.lessons);
       }
     }
   })
