@@ -34,16 +34,12 @@ code {
   justify-content: space-between;
 }
 
-.splashNav a {
-  margin-top: 18px;
-  color: #fff;
-  text-decoration: none;
-  font-size: 44px;
-  font-weight: 700;
+.logo {
+  height: 75px;
 }
 
 .headerMenu {
-  height: 55px;
+  height: 75px;
   margin-right: 100px;
   margin-top: 10px;
   cursor: pointer;
@@ -57,7 +53,7 @@ code {
 }
 
 .splashRegisterContainer {
-  height: 625px;
+  height: 600px;
   background-image: url("star-pattern.svg");
   display: flex;
   padding: 40px;
@@ -67,7 +63,7 @@ code {
 @media (max-width: 1065px) {
   .splashRegisterContainer {
     flex-direction: column;
-    padding: 24px 12px;
+    padding: 80px 12px 12px 12px;
   }
 }
 
@@ -113,18 +109,18 @@ code {
   cursor: pointer;
 }
 
-.splashRegister button:hover {
+button:hover {
   filter: brightness(105%);
 }
 
-.splashRegister button:active {
+button:active {
   position: relative;
-  top: 2px;
-  border-bottom-width: 0;
+  top: 4px;
+  border-bottom-color: transparent;
 }
 
 .signupButton {
-  background-color: rgb(88,167,0);
+  background-color: rgb(113, 209, 4);
   border-width: 0 0 4px;
   border-color: #77dd03;
 }
@@ -177,6 +173,11 @@ code {
   cursor: pointer;
 }
 
+.headerDropdown ul li a {
+  color: #4b4b4b;
+  text-decoration: none;
+}
+
 .dropdownItem:first-child {
   padding-top: 0;
 }
@@ -201,5 +202,36 @@ code {
 }
 
 .footerLinks {
+  text-align: left;
   border-top: 2px solid hsla(0,0%,100%,.2);
+}
+
+.footerLinks h4 {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.footerLinks a {
+  padding-right: 24px;
+  padding-top: 6px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  opacity: .5;
+}
+
+.splashFooter .signupButton {
+  min-width: 150px;
+  padding: 16px 24px;
+  border-radius: 16px;
+  outline: none;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 100px;
+  background-color: rgb(113, 209, 4);
+  border-width: 0 0 4px;
+  border-color: #77dd03;
 }
