@@ -18,7 +18,9 @@ const {
   GraphQLInt, 
   GraphQLID, 
   GraphQLList,
-  GraphQLNonNull } = graphql;
+  GraphQLNonNull,
+  GraphQLBoolean,
+ } = graphql;
 
 const mutation = new GraphQLObjectType({
   name: "Mutation",
@@ -126,7 +128,7 @@ const mutation = new GraphQLObjectType({
       }
     },
     addQuestionToLesson: {
-      type: CourseType,
+      type: LessonType,
       args: {
         lessonId: { type: GraphQLID },
         questionId: { type: GraphQLID },
@@ -136,7 +138,7 @@ const mutation = new GraphQLObjectType({
       }
     },
     removeQuestionFromLesson: {
-      type: CourseType,
+      type: QuestionType,
       args: {
         lessonId: { type: GraphQLID },
         questionId: { type: GraphQLID },
@@ -186,7 +188,8 @@ const mutation = new GraphQLObjectType({
     newAnswer: {
         type: AnswerType,
         args: {
-            answer: { type: new GraphQLNonNull(GraphQLString) }
+            answer: { type: new GraphQLNonNull(GraphQLString) },
+            isCorrect: { type: GraphQLBoolean}
         },
         resolve(parent, args) {
             return new Answer(args).save();

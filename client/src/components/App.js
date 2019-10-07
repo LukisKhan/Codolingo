@@ -3,25 +3,30 @@ import { HashRouter, Route, Switch } from "react-router-dom";
 
 import AuthRoute from './util/route_util';
 
-// import Login from './auth/Login';
-// import Register from './auth/Register';
+import Login from './auth/Login';
+import Register from './auth/Register';
 import Splash from './splash/splash';
-// import DashboardNav from './nav/DashboardNav';
+import SplashNav from './nav/SplashNav';
+import DashboardNav from './nav/DashboardNav';
+import Question from './questions/question';
+import QuestionList from './questions/QuestionList';
 
-class App extends React.Component {
-  render() {
-    return (
-      <HashRouter>
-        <Splash />
-        <Switch>
-          {/* <DashboardNav /> */}
-          {/* <AuthRoute exact path="/login" component={Login} routeType="auth" />
-          <Route path="/register" component={Register} /> */}
-          {/* <Route path="/" component={Splash} /> */}
-        </Switch>
-      </HashRouter>
-    )
-  }
+const App = () => {
+  return (
+    <HashRouter>
+      <SplashNav />
+      <Splash />
+      <h1>This is Codolingo</h1>
+      <Switch>
+        <Route path="/register" component={Register} />
+        <AuthRoute exact path="/login" component={Login} routeType="auth" />
+        <AuthRoute path="/" component={DashboardNav} routeType="auth" />
+        <Route path="/" component={Splash} />
+        <Route path="/question/list" component={QuestionList} />
+        <Route path="/question" component={Question} />
+      </Switch>
+    </HashRouter>
+  )
 }
 
 export default App;

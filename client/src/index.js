@@ -13,6 +13,8 @@ import { ApolloLink } from "apollo-link";
 
 import { VERIFY_USER } from './graphql/mutations';
 
+//Test
+
 // APOLLO SETUP
 const cache = new InMemoryCache({
     dataIdFromObject: object => object._id || null
@@ -85,6 +87,7 @@ const Root = () => {
   return (
     <ApolloProvider client={client}>
       <App />
+      {/* <div>Testing</div> */}
     </ApolloProvider>
   );
 };
