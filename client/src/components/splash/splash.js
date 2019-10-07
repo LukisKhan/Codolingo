@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import SplashNav from '../nav/SplashNav';
 import SplashFooter from './splash_footer';
@@ -14,8 +15,8 @@ class Splash extends React.Component {
                     <img className="planet" src={Planet} alt="planet" />
                     <div className="splashRegister">
                         <h1>Learn coding for free.</h1>
-                        <div><button className="signupButton">GET STARTED</button></div>
-                        <div><button className="signinButton">I ALREADY HAVE AN ACCOUNT</button></div>
+                        <Link to="/register"><button className="signupButton">GET STARTED</button></Link>
+                        <Link to="login"><button className="signinButton">I ALREADY HAVE AN ACCOUNT</button></Link>
                     </div>
                 </div>
                 <div className="splashPromotion">

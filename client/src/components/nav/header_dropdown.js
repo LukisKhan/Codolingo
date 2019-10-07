@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 class HeaderDropdown extends React.Component {
     render() {
@@ -7,8 +7,12 @@ class HeaderDropdown extends React.Component {
             <div className="headerDropdown">
                 <div className="dropdownTriangle"></div>
                 <ul className="dropdownList">
-                    <li className="dropdownItem">Sign in</li>
-                    <li className="dropdownItem">Get started</li>
+                    <li className="dropdownItem">
+                        <Link to="/login">Sign in</Link>
+                    </li>
+                    <li className="dropdownItem">
+                        <Link to="/register">Get started</Link>
+                    </li>
                     <li className="dropdownItem">Site language: English</li>
                 </ul>
             </div>

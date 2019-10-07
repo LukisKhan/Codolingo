@@ -16,7 +16,6 @@ const App = () => {
     <HashRouter>
       <SplashNav />
       <Splash />
-      <h1>This is Codolingo</h1>
       <Switch>
         <Route path="/register" component={Register} />
         <AuthRoute exact path="/login" component={Login} routeType="auth" />
