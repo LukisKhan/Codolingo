@@ -24,23 +24,6 @@ export default {
       }
     }
   `,
-  FETCH_LESSONS: gql`
-    query FetchLessons {
-      lessons {
-        _id,
-        title,
-        questions {
-          _id,
-          prompt,
-          answers {
-            _id,
-            answer,
-            isCorrect
-          }
-        }
-      }
-    }
-  `,
   FETCH_QUESTIONS: gql`
     query FetchQuestions {
       questions {
@@ -61,11 +44,20 @@ export default {
       }
     }
   `,
-  FETCH_LESSONS: gql`
+  FETCH_LESSONS: gql `
     query FetchLessons {
       lessons {
-        _id
-        title
+        _id,
+        title,
+        questions {
+          _id,
+          prompt,
+          answers {
+            _id,
+            answer,
+            isCorrect
+          }
+        }
       }
     }
   `,
