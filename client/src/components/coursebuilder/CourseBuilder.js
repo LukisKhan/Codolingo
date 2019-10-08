@@ -20,11 +20,40 @@ class CourseBuilder extends React.Component {
           {({ loading, error, data }) => {
             if (loading) return <p>Loading...</p>;
             if (error) return <p>Error</p>;
+debugger
             return data.courses.map(({ _id, language, lessons }) => (
               <li key={_id}>
-                <Link to={`/lessons/${_id}`}></Link>
                 <p>{language}</p>
-                <p>{lessons}</p>
+                <Link to={`/lessons/${_id}`}></Link>
+                
+                <ul>
+                  {lessons.map(lesson => {
+                    return (
+                      <li key={lesson._id}>
+                        { lesson.title }
+                        <ul>
+                          {lesson.questions.map(question => {
+                            return (
+                              <li key={question._id}>
+                                {question.prompt}
+                                <ul>
+                                  {question.answers.map(answer => {
+                                    return (
+                                      <li key={answer._id}>
+                                        {answer.answer}
+                                        {answer.isCorrect}
+                                      </li>
+                                    )
+                                  })}
+                                </ul>
+                              </li>
+                            )
+                          })}
+                        </ul>
+                      </li>
+                    )
+                  })}
+                </ul>
               </li>
             ));
           }}

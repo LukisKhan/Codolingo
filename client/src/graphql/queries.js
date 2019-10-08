@@ -12,7 +12,15 @@ export default {
       courses {
         _id
         language
-        lessons
+        lessons {
+          _id, title,
+          questions {
+            _id, prompt,
+            answers {
+              _id, answer, isCorrect
+            }
+          }
+        }
       }
     }
   `,
