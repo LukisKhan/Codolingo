@@ -8,16 +8,16 @@ const { FETCH_LESSON } = Queries;
 class LessonDetail extends React.Component {
   constructor(props){
     super(props);
-    this.state = { questionIdx: 0 }
+    this.state = { questionIdx: 0, correctAnswer: "", incorrectAnswer: ""};
   }
-  chooseAnswer(e, isCorrect){
-    // e.preventDefault();
+  chooseAnswer(e, isCorrect, answer){
     e.stopPropagation();
-    // console.log(e.target.value);
     if (isCorrect){
       console.log("Correct");
+      this.setState({correctAnswer: ` ${answer} \n> Correct!`, incorrectAnswer: ""})
     } else {
       console.log("Try again");
+      this.setState({ incorrectAnswer: ` ${answer} \n> Sorry, try again`, correctAnswer: "" })
     }
   }
   render() {
@@ -29,7 +29,6 @@ class LessonDetail extends React.Component {
               if (error) return <p>Error</p>;
               let questionArray = data.lesson.questions;
               let questionCurrent = questionArray[this.state.questionIdx];
-              console.log(this.state.questionIdx);
               if (this.state.questionIdx >= questionArray.length) {
                 return <div>End of lesson</div>
               } else {
@@ -38,19 +37,24 @@ class LessonDetail extends React.Component {
                     <p>Lesson details</p>
                     <p>Title: {data.lesson.title}</p>
                     <p>ID: {data.lesson._id}</p>
-                      <p>What would the follow expression return: </p>
-                      <p>{questionCurrent.prompt}</p>
+                    <div id="terminal">
+                      <div id="top-terminal-bar"></div>
+                        <p id="question-intro">What would the follow expression return: </p>
+                        <p id="prompt"> > {questionCurrent.prompt}</p>
+                        <p id="correct-answer">{this.state.correctAnswer}</p>
+                        <p id="incorrect-answer">{this.state.incorrectAnswer}</p>
+                    </div>
                       <ul>
                         {questionCurrent.answers.map((answer) => {
                           return (
-                            <li key={answer._id} onClick={e => this.chooseAnswer(e, answer.isCorrect)}>
+                            <li key={answer._id} onClick={e => this.chooseAnswer(e, answer.isCorrect, answer.answer)}>
                               <h4>{answer.answer}</h4>
                               {/* <h4>Correct: {answer.isCorrect.toString()}</h4> */}
                             </li>
                           )
                         })}
                       </ul>
-                    <button onClick={e => { this.setState({ questionIdx: this.state.questionIdx + 1 }) }}>Next</button>
+                    <button onClick={e => { this.setState({ questionIdx: this.state.questionIdx + 1, correctAnswer: "", incorrectAnswer:"" }) }}>Next</button>
                   </div>
                 )
 
