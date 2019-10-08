@@ -7,6 +7,25 @@ export default {
       isLoggedIn @client
     }
   `,
+  FETCH_COURSES: gql `
+    query FetchCourses {
+      courses {
+        _id
+        language
+        lessons
+      }
+    }
+  `,
+  FETCH_LESSONS: gql`
+    query FetchLessons {
+      lessons {
+        _id
+        title
+        questions
+        courses
+      }
+    }
+  `,
   FETCH_QUESTIONS: gql`
     query FetchQuestions {
       questions {
@@ -15,20 +34,4 @@ export default {
       }
     }
   `,
-  // FETCH_QUESTIONS: gql`
-  //   query FetchQuestions {
-  //     questions {
-  //       _id
-  //       prompt
-  //     }
-  //   }
-  // `,
-  // FETCH_QUESTIONS: gql`
-  //   query FetchQuestions {
-  //     questions {
-  //       _id
-  //       prompt
-  //     }
-  //   }
-  // `,
 };
