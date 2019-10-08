@@ -35,3 +35,11 @@ export const NEW_QUESTION = gql`
     }
   }
 `;
+
+export const REMOVE_QUESTION = gql`
+  mutation RemoveQuestion($id: ID!) {
+    removeQuestion(id: $id) {
+      _id
+    }
+  }
+`;

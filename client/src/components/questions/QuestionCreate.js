@@ -18,20 +18,16 @@ class QuestionCreate extends Component {
   }
 
   updateField(field){
-    console.log(this.state[field]);
     return e => this.setState({[field]: e.target.value});
   }
 
   updateCache(cache, { data: {newQuestion} }) {
     let questions;
-    console.log('in updateCache');
     try {
       questions = cache.readQuery({ query: FETCH_QUESTIONS });
     } catch (err) {
-      console.log("error in updateCache");
       return;
     }
-    console.log(`question in updateCache ${questions}`);
     if (questions) {
       let questionArray = questions.questions;
       cache.writeQuery({
@@ -45,7 +41,7 @@ class QuestionCreate extends Component {
     console.log(this.state);
     newQuestion({
       variables: {
-        prompt: this.state[prompt]
+        prompt: this.state.prompt
       }
     }).then( data => {
       this.setState({
@@ -53,8 +49,6 @@ class QuestionCreate extends Component {
         prompt: "",
       });
     });
-    console.log(this.state);
-    console.log(newQuestion);
   }
   render() {
     return (
@@ -66,9 +60,9 @@ class QuestionCreate extends Component {
           <div>
             <form onSubmit={e => this.handleSubmit(e, newQuestion)}>
               <label> Create Question
-              <input onChange={this.updateField("prompt")} value={this.state[prompt]} /><br />
+              <input onChange={this.updateField("prompt")} value={this.state.prompt} /><br />
               </label>
-              {/* <label> Answer Choice
+              <label> Answer Choice
               <input onChange={this.updateField("answerA")} type="text" /><br />
               </label>
               <label> Answer Choice
@@ -79,7 +73,7 @@ class QuestionCreate extends Component {
               </label>
               <label> Answer Choice
               <input onChange={this.updateField("answerD")} type="text" /><br />
-              </label> */}
+              </label>
               <button type="submit">+</button>
             </form>
             <p>{this.state.message}</p>
