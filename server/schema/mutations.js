@@ -151,7 +151,8 @@ const mutation = new GraphQLObjectType({
     newQuestion: {
         type: QuestionType,
         args: {
-            prompt: { type: new GraphQLNonNull(GraphQLString) }
+            prompt: { type: new GraphQLNonNull(GraphQLString) },
+            example: { type: GraphQLString },
         },
         resolve(parent, args) {
           return new Question(args).save();
