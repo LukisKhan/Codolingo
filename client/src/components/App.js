@@ -21,11 +21,10 @@ const App = () => {
       <Switch>
         <Route path="/register" component={Register} />
         <AuthRoute exact path="/login" component={Login} routeType="auth" />
+        <Route path="/coursebuilder" component={CourseBuilder} />
         <Route path="/question/list" component={QuestionList} />
         <Route path="/question" component={Question} />
-        <AuthRoute path="/" component={DashboardNav} routeType="auth" />
-        <AuthRoute path="/coursebuilder" component={CourseBuilder} routeType="auth" />
-        <Route path="/" component={Splash} />
+        <Route path="/" component={DashboardNav} />
       </Switch>
     </HashRouter>
   )
