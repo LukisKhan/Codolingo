@@ -39,9 +39,9 @@ code {
 }
 
 .headerMenu {
-  height: 75px;
-  margin-right: 100px;
-  margin-top: 10px;
+  height: 60px;
+  margin-right: 80px;
+  margin-top: 5px;
   cursor: pointer;
 }
 
@@ -138,7 +138,7 @@ button:active {
 
 .headerDropdown {
   position: absolute;
-  right: 80px;
+  right: 70px;
   width: 280px;
   border: 2px solid #e5e5e5;
   border-radius: 15px;
@@ -173,9 +173,14 @@ button:active {
   cursor: pointer;
 }
 
-.headerDropdown ul li a {
+.dropdownItem button {
+  background-color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+  border: none;
+  outline: none;
   color: #4b4b4b;
-  text-decoration: none;
+  cursor: pointer;
 }
 
 .dropdownItem:first-child {
@@ -234,4 +239,88 @@ button:active {
   background-color: rgb(113, 209, 4);
   border-width: 0 0 4px;
   border-color: #77dd03;
+}
+
+/* User Auth Modals */
+
+.authModal {
+  position: fixed;
+  left: 10%;
+  top: 10%;
+  width: 70%;
+  z-index: 3;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+.authModal div:first-child {
+  position: absolute;
+  left: 97.5%;
+  top: -17px;
+  padding: 7px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: #fff;
+  border: 2px solid #e5e5e5;
+}
+
+.authModal div:first-child:hover {
+  opacity: .8;
+}
+
+.authModal h3 {
+  margin: 10px 130px 10px 0;
+  font-size: 26px;
+}
+
+.authInputContainer {
+  width: 100%;
+  margin-bottom: 20px;
+  border: 2px solid #e5e5e5;
+  background: #f0f0f0;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.authInput {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  padding: 14px 20px 14px 10px;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.authModal button {
+  width: 100%;
+  padding: 16px 24px;
+  border-radius: 16px;
+  background-color: #1899d6;
+  outline: none;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.disclaimer {
+  margin-bottom: 20px;
+  color: #afafaf;
+  font-size: 14px;
+}
+
+.switchAuth {
+  display: flex;
+}
+
+.switchAuthButton {
+  border: none;
+  outline: none;
+  width: 80px !important;
+  padding: 0 !important;
+  background-color: transparent !important;
+  color: #1899d6 !important;
+  font-size: 14px !important;
 }
