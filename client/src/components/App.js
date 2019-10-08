@@ -10,7 +10,7 @@ import SplashNav from './nav/SplashNav';
 import DashboardNav from './nav/DashboardNav';
 import Question from './questions/question';
 import QuestionList from './questions/QuestionList';
-import CourseBuilder from './coursebuilder/CourseBuilder'
+// import CourseBuilder from './coursebuilder/CourseBuilder'
 
 const App = () => {
   return (
@@ -21,7 +21,7 @@ const App = () => {
       <Switch>
         <Route path="/register" component={Register} />
         <AuthRoute exact path="/login" component={Login} routeType="auth" />
-        <Route path="/coursebuilder" component={CourseBuilder} />
+        {/* <Route path="/coursebuilder" component={CourseBuilder} /> */}
         <Route path="/question/list" component={QuestionList} />
         <Route path="/question" component={Question} />
         <Route path="/" component={DashboardNav} />
