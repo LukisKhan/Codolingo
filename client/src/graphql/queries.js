@@ -15,4 +15,20 @@ export default {
       }
     }
   `,
+  // FETCH_QUESTIONS: gql`
+  //   query FetchQuestions {
+  //     questions {
+  //       _id
+  //       prompt
+  //     }
+  //   }
+  // `,
+  // FETCH_QUESTIONS: gql`
+  //   query FetchQuestions {
+  //     questions {
+  //       _id
+  //       prompt
+  //     }
+  //   }
+  // `,
 };

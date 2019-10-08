@@ -10,6 +10,7 @@ import SplashNav from './nav/SplashNav';
 import DashboardNav from './nav/DashboardNav';
 import Question from './questions/question';
 import QuestionList from './questions/QuestionList';
+import CourseBuilder from './coursebuilder/CourseBuilder'
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/question/list" component={QuestionList} />
         <Route path="/question" component={Question} />
         <AuthRoute path="/" component={DashboardNav} routeType="auth" />
+        <AuthRoute path="/coursebuilder" component={CourseBuilder} routeType="auth" />
         <Route path="/" component={Splash} />
       </Switch>
     </HashRouter>
