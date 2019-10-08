@@ -10,6 +10,7 @@ const QuestionType = new GraphQLObjectType({
   fields: () => ({
     _id: { type: GraphQLID },
     prompt: { type: GraphQLString },
+    example: { type: GraphQLString },
     answers: { 
       type: new GraphQLList(require("./answer_type")),
       resolve(parentValue) {
