@@ -2,7 +2,8 @@ import React from "react";
 import { Query } from "react-apollo";
 import { Link } from "react-router-dom";
 import Queries from "../../graphql/queries";
-import { withRouter } from "react-router-dom"
+import { withRouter } from "react-router-dom";
+import Repl from "../repl/repl";
 const { FETCH_LESSON } = Queries;
 
 class LessonDetail extends React.Component {
@@ -61,7 +62,9 @@ class LessonDetail extends React.Component {
               }
             }}
           </Query>
-
+          <div id="repl">
+            Test your code
+          </div>
       </div>
     )
   }
