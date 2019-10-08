@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
-import { NEW_QUESTION } from '../../graphql/mutations';
+import { NEW_QUESTION, REGISTER_USER } from '../../graphql/mutations';
 import Queries from '../../graphql/queries';
 const { FETCH_QUESTIONS } = Queries;
 
-class Question extends Component {
+class QuestionCreate extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -15,26 +15,21 @@ class Question extends Component {
       answerC: "",
       answerD: "",
     };
-    // this.updateField = this.updateField.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   updateField(field){
-    return e =>  this.setState({[field]: e.target.value});
+    return e => this.setState({[field]: e.target.value});
   }
 
-  updateCache(cache, { data }) {
+  updateCache(cache, { data: {newQuestion} }) {
     let questions;
     try {
       questions = cache.readQuery({ query: FETCH_QUESTIONS });
     } catch (err) {
       return;
     }
-
     if (questions) {
-      // take care of un-nesting things before we write to our cache
       let questionArray = questions.questions;
-      let newQuestion = data.newQuestion;
       cache.writeQuery({
         query: FETCH_QUESTIONS,
         data: { questions: questionArray.concat(newQuestion) }
@@ -43,14 +38,14 @@ class Question extends Component {
   }
   handleSubmit(e, newQuestion) {
     e.preventDefault();
-    let prompt = this.state.prompt;
+    console.log(this.state);
     newQuestion({
       variables: {
-        prompt: prompt
+        prompt: this.state.prompt
       }
     }).then( data => {
       this.setState({
-        message: `New question has been created`,
+        message: "New question has been created",
         prompt: "",
       });
     });
@@ -59,12 +54,12 @@ class Question extends Component {
     return (
       <Mutation
         mutation={NEW_QUESTION}
-        update={(cache, data) => this.updateCache(cache, data)}
-      >
+        update={(cache, data) => this.updateCache(cache, data)} 
+        >
         {(newQuestion, { data }) => (
           <div>
             <form onSubmit={e => this.handleSubmit(e, newQuestion)}>
-              <label> Question
+              <label> Create Question
               <input onChange={this.updateField("prompt")} value={this.state.prompt} /><br />
               </label>
               <label> Answer Choice
@@ -79,7 +74,7 @@ class Question extends Component {
               <label> Answer Choice
               <input onChange={this.updateField("answerD")} type="text" /><br />
               </label>
-              <button>+</button>
+              <button type="submit">+</button>
             </form>
             <p>{this.state.message}</p>
           </div>
@@ -90,4 +85,4 @@ class Question extends Component {
   }
 }
 
-export default Question;
+export default QuestionCreate;
