@@ -27,10 +27,17 @@ export default {
   FETCH_LESSONS: gql`
     query FetchLessons {
       lessons {
-        _id
-        title
-        questions
-        courses
+        _id,
+        title,
+        questions {
+          _id,
+          prompt,
+          answers {
+            _id,
+            answer,
+            isCorrect
+          }
+        }
       }
     }
   `,
