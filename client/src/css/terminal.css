@@ -1,0 +1,33 @@
+#terminal{
+  background-color: rgb(17, 19, 19);
+  width: 35vw;
+  height: 25vh;
+  color: white;
+  margin: 10px;
+  border-radius: 2%;
+  contain: strict;
+  border: 1px solid black;
+  box-shadow: 5px 5px 50px black;
+}
+#top-terminal-bar{
+  background-color: rgb(77, 87, 87);
+  width: 100%;
+  height: 10%;
+  border-bottom: 1px solid black;
+}
+
+#question-intro{
+  margin-left: 10px;
+  color: white;
+}
+#prompt{
+  margin-left: 10px;
+}
+#correct-answer{
+  margin-left: 10px;
+  color: greenyellow;
+}
+#incorrect-answer {
+  margin-left: 10px;
+  color: darkred;
+}

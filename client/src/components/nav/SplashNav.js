@@ -1,12 +1,12 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 
-import HeaderDropdown from './header_dropdown';
 import Menu from '../../assets/hamburger-menu.svg';
+import Logo from '../assets/codolingo-logo2.png';
 
-import { Query, ApolloConsumer } from "react-apollo";
-import Queries from "../../graphql/queries";
-const { IS_LOGGED_IN } = Queries;
+// import { Query, ApolloConsumer } from "react-apollo";
+// import Queries from "../../graphql/queries";
+// const { IS_LOGGED_IN } = Queries;
 
 class SplashNav extends React.Component {
     constructor(props) {
@@ -38,50 +38,28 @@ class SplashNav extends React.Component {
     render() {
         return(
             <div className="splashNav">
-                <a href="#">Codolingo</a>
+                <a href="#"><img className="logo" src={Logo} alt="logo" /></a>
                 <div className="dropdownButton" onClick={this.handleClick}>
                     <img className="headerMenu" src={Menu} alt="hamburger menu" />
-                    {this.state.dropdown && <HeaderDropdown />}
+                    {this.state.dropdown && 
+                        <div className="headerDropdown">
+                            <div className="dropdownTriangle"></div>
+                            <ul className="dropdownList">
+                                <li className="dropdownItem" onClick={this.props.toggleLoginModal}>
+                                    <button className="dropdownButton" onClick={this.props.toggleLoginModal}>Sign in</button>
+                                </li>
+                                <li className="dropdownItem" onClick={this.props.toggleLoginModal}>
+                                    <button className="dropdownButton" onClick={this.props.toggleRegisterModal}>Get started</button>
+                                </li>
+                                <li className="dropdownItem">Site language: English</li>
+                            </ul>
+                        </div>}
                 </div>
-                <ApolloConsumer>
-                    {client => (
-                        <Query query={IS_LOGGED_IN}>
-                        {({ data }) => {
-                            if (data.isLoggedIn) {
-                            return (
-                                <div>
-                                <button
-                                    onClick={e => {
-                                    e.preventDefault();
-                                    localStorage.removeItem("auth-token");
-                                    client.writeData({ data: { isLoggedIn: false } });
-                                    this.props.history.push("/");
-                                    }}
-                                >
-                                    Logout
-                                </button>
-                                <Link to="/courses">Courses</Link>
-                                <Link to="/courses">Achievements</Link>
-                                <Link to="/courses">Profile</Link>
-                                </div>
-                            );
-                            } else {
-                            return (
-                                <div>
-                                <Link to="/">Home</Link>
-                                <Link to="/login">Login</Link>
-                                <Link to="/register">Register</Link>
-                                </div>
-                            );
-                            }
-                        }}
-                        </Query>
-                    )}
-                    </ApolloConsumer>
+                
             </div>
         )
     }
 }
 
-export default withRouter(SplashNav);
+export default SplashNav;
 
