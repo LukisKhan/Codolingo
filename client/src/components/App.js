@@ -10,7 +10,7 @@ import QuestionCreate from './questions/QuestionCreate';
 import QuestionList from './questions/QuestionList';
 import LessonList from './lessons/LessonList';
 import LessonDetail from './lessons/LessonDetail';
-
+import Repl from './repl/repl';
 
 const App = () => {
   return (
@@ -22,7 +22,9 @@ const App = () => {
         <Route exact path="/questions" component={QuestionList} />
         <Route exact path="/lessons" component={LessonList} />
         <Route exact path="/lessons/:id" component={LessonDetail} />
-        {/* <AuthRoute exact path="/" component={DashboardNav} routeType="auth" /> */}
+        <AuthRoute exact path="/" component={DashboardNav} routeType="auth" />
+        <Route path="/" component={Splash} />
+        <Route path="/repl" component={Repl} />
         
       </Switch>
     </HashRouter>
