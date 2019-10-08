@@ -5,7 +5,7 @@ import AuthRoute from './util/route_util';
 
 import Splash from './splash/splash';
 import SplashNav from './nav/SplashNav';
-import DashboardNav from './nav/DashboardNav';
+// import DashboardNav from './nav/DashboardNav';
 import QuestionCreate from './questions/QuestionCreate';
 import QuestionList from './questions/QuestionList';
 import LessonList from './lessons/LessonList';
