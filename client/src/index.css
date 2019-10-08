@@ -177,12 +177,14 @@ button:active {
 
 .dropdownItem button {
   background-color: #fff;
+  width: 100%;
   font-weight: 700;
   font-size: 20px;
   border: none;
   outline: none;
   color: #4b4b4b;
   cursor: pointer;
+  text-align: left;
 }
 
 .dropdownItem:first-child {

@@ -20,7 +20,8 @@ class SplashNav extends React.Component {
         body.addEventListener("click", (event) => {
             if(this.state.dropdown) {
                 if(!Array.from(event.target.classList).includes("headerDropdown")
-                && !Array.from(event.target.classList).includes("dropdownItem")) {
+                && !Array.from(event.target.classList).includes("dropdownItem")
+                && !Array.from(event.target.classList).includes("dropdownButton")) {
                     if(this.state.dropdown) {
                         this.setState({dropdown: false})
                     }
@@ -45,10 +46,10 @@ class SplashNav extends React.Component {
                         <div className="headerDropdown">
                             <div className="dropdownTriangle"></div>
                             <ul className="dropdownList">
-                                <li className="dropdownItem" onClick={this.props.toggleLoginModal}>
+                                <li className="dropdownItem">
                                     <button className="dropdownButton" onClick={this.props.toggleLoginModal}>Sign in</button>
                                 </li>
-                                <li className="dropdownItem" onClick={this.props.toggleLoginModal}>
+                                <li className="dropdownItem">
                                     <button className="dropdownButton" onClick={this.props.toggleRegisterModal}>Get started</button>
                                 </li>
                                 <li className="dropdownItem">Site language: English</li>
