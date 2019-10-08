@@ -15,4 +15,41 @@ export default {
       }
     }
   `,
+  FETCH_QUESTION: gql`
+    query FetchQuestion($id:ID!) {
+      question(_id: $id) {
+        _id
+        prompt
+        answers{
+          answer
+          _id
+        }
+      }
+    }
+  `,
+  FETCH_LESSONS: gql`
+    query FetchLessons {
+      lessons {
+        _id
+        title
+      }
+    }
+  `,
+  FETCH_LESSON: gql`
+    query FetchLesson($id:ID!) {
+      lesson(_id: $id) {
+        _id
+        title
+        questions {
+          prompt
+          _id
+          answers {
+            answer
+            isCorrect
+            _id
+          }
+        }
+      }
+    }
+  `,
 };

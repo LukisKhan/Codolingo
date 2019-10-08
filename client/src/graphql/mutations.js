@@ -31,7 +31,15 @@ export const NEW_QUESTION = gql`
   mutation NewQuestion($prompt: String!) {
     newQuestion(prompt: $prompt) {
       prompt
-      id
+      _id
+    }
+  }
+`;
+
+export const REMOVE_QUESTION = gql`
+  mutation RemoveQuestion($id: ID!) {
+    removeQuestion(id: $id) {
+      _id
     }
   }
 `;
