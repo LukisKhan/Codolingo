@@ -9,6 +9,9 @@ const QuestionSchema = new Schema({
   example: {
     type: String,
   },
+  hint: {
+    type: String,
+  },
   answers: [
       {
         type: Schema.Types.ObjectId,
@@ -61,13 +64,14 @@ QuestionSchema.statics.removeAnswer = function (questionId, answerId) {
   });
 };
 
-QuestionSchema.statics.updateQuestion = function (questionId, prompt, example) {
+QuestionSchema.statics.updateQuestion = function (questionId, prompt, example, hint) {
   const Question = mongoose.model("questions");
 
   return Question.findById(questionId).then(question => {
-    if (question.prompt || question.example) {
+    if (question.prompt || question.example || question.hint) {
       question.prompt = prompt;
       question.example = example;
+      question.hint = hint;
 
       question.save().then(question => question);
     }
