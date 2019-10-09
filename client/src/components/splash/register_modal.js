@@ -57,7 +57,7 @@ class RegisterModal extends React.Component {
                                 value={this.state.email} onChange={this.update("email")} />
                             <input className="authInput" type="password" placeholder="Password"
                                 value={this.state.password} onChange={this.update("password")} />
-                            <Link to="/lessons">
+                            <Link to="/courses">
                                 <button className="authButton" type="submit">Sign up</button>
                             </Link>
                         </form>
