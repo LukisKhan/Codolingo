@@ -1,7 +1,7 @@
 import React from 'react';
 import {Mutation} from 'react-apollo';
 import {LOGIN_USER} from '../../graphql/mutations';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Close from '../../assets/close.svg';
 

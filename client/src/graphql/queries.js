@@ -24,6 +24,18 @@ export default {
       }
     }
   `,
+  FETCH_COURSE: gql`
+    query FetchCourse($id:ID!) {
+      course(_id: $id) {
+        _id
+        language
+        lessons {
+          title
+          _id
+        }
+      }
+    }
+  `,
   FETCH_LESSONS: gql`
     query FetchLessons {
       lessons {
