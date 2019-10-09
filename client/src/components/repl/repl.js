@@ -27,12 +27,15 @@ export class Repl extends Component {
   }
   render() {
     return (
-      <div>
-        <h2>Test single line expression in js</h2>
+      <div className="repl">
+        <h6>Test single line expression in js</h6>
         <form onSubmit={this.handleSubmit}>
-          <input
+          <textarea 
+            style={{ minHeight: 100, minWidth: 250 }}
             value={this.state.inputText}
-            onChange={e => this.setState({inputText: e.target.value})} />
+            placeholder='Test your code here' 
+            onChange={e => this.setState({ inputText: e.target.value })} >
+          </textarea>
           <button>Test your code</button>
         </form>
         <div>{this.state.outputText.toString()}</div>
