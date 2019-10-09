@@ -15,7 +15,7 @@ export default {
         lessons {
           _id, title,
           questions {
-            _id, prompt,
+            _id, prompt, example,
             answers {
               _id, answer, isCorrect
             }
@@ -50,6 +50,7 @@ export default {
     query FetchQuestions {
       questions {
         _id
+        example
         prompt
       }
     }
@@ -59,6 +60,7 @@ export default {
       question(_id: $id) {
         _id
         prompt
+        example
         answers{
           answer
           _id
@@ -81,6 +83,7 @@ export default {
         title
         questions {
           prompt
+          example
           _id
           answers {
             answer
