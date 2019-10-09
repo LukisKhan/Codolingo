@@ -30,6 +30,7 @@ class LessonDetail extends React.Component {
               if (error) return <p>Error</p>;
               let questionArray = data.lesson.questions;
               let questionCurrent = questionArray[this.state.questionIdx];
+              console.log(this.state.questionIdx);
               if (this.state.questionIdx >= questionArray.length) {
                 return <div>End of lesson</div>
               } else {

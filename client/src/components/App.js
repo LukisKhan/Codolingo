@@ -25,7 +25,6 @@ const App = () => {
         {/* <AuthRoute exact path="/" component={DashboardNav} routeType="auth" /> */}
         <Route path="/" component={Splash} />
         <Route path="/repl" component={Repl} />
-        
       </Switch>
     </HashRouter>
   )
