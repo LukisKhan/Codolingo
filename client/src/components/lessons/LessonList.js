@@ -1,13 +1,36 @@
 import React from "react";
-import { Query } from "react-apollo";
+import { Query, ApolloConsumer } from "react-apollo";
 import { Link } from "react-router-dom";
 import Queries from "../../graphql/queries";
-const { FETCH_LESSONS } = Queries;
+const { FETCH_LESSONS, IS_LOGGED_IN } = Queries;
 
-const LessonList = () => {
+const LessonList = (props) => {
   return (
-    <div>
-      <ul className="lesson-list">
+    <div className="lesson-list">
+      <Link to="/courses">Choose a new language</Link>
+      <ApolloConsumer>
+          {client => (
+            <Query query={IS_LOGGED_IN}>
+              {({ data }) => (
+                <div>
+                  <Link to="/">
+                    <button
+                      onClick={e => {
+                        e.preventDefault();
+                        localStorage.removeItem("auth-token");
+                        client.writeData({ data: { isLoggedIn: false } });
+                        props.history.push("/");
+                      }}
+                    >
+                      Logout
+                    </button>
+                  </Link>
+                </div>
+              )}
+            </Query>
+          )}
+        </ApolloConsumer>
+      <ul>
         <Query query={FETCH_LESSONS}>
           {({ loading, error, data }) => {
             if (loading) return <p>Loading...</p>;

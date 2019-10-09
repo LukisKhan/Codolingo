@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 
 import SplashNav from '../nav/SplashNav';
 import SplashFooter from './splash_footer';

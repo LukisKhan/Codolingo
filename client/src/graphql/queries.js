@@ -7,6 +7,45 @@ export default {
       isLoggedIn @client
     }
   `,
+  FETCH_COURSES: gql `
+    query FetchCourses {
+      courses {
+        _id
+        language
+        lessons {
+          _id, title,
+          questions {
+            _id, prompt,
+            answers {
+              _id, answer, isCorrect
+            }
+          }
+        }
+      }
+    }
+  `,
+  FETCH_COURSE: gql`
+    query FetchCourse($id:ID!) {
+      course(_id: $id) {
+        _id
+        language
+        lessons {
+          title
+          _id
+        }
+      }
+    }
+  `,
+  FETCH_LESSONS: gql`
+    query FetchLessons {
+      lessons {
+        _id
+        title
+        questions
+        courses
+      }
+    }
+  `,
   FETCH_QUESTIONS: gql`
     query FetchQuestions {
       questions {

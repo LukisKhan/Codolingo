@@ -6,6 +6,9 @@ const QuestionSchema = new Schema({
     type: String,
     required: true
   },
+  example: {
+    type: String,
+  },
   answers: [
       {
         type: Schema.Types.ObjectId,
