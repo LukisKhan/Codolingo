@@ -1,0 +1,189 @@
+.lesson-list {
+  text-decoration: none;
+  width: 40vw;
+  border: 1px solid green;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.lesson-list li {
+  font-size: 30px;
+  list-style-type: none;
+  width: 25vw;
+  height: 25vw;
+  display: flex;
+  align-items: center;
+}
+.lesson-list li a {
+  width: 50%;
+  height: 50%;
+  
+}
+
+/* unvisited link */
+.lesson-list li a:link {
+  color: rgb(67, 197, 197);
+  text-decoration: none;
+}
+/* visited link */
+.lesson-list li a:visited {
+  color: grey;
+}
+/* mouse over link */
+.lesson-list li a:hover {
+  color: blue;
+}
+/* selected link */
+.lesson-list li a:active {
+  color: gold;
+}
+.line {
+  width: 0px;
+  height: 13vw;
+  position: relative;
+  bottom: 12.5vw;
+  right: 6.5vw;
+  border-right: 2px dashed black;
+}
+
+.lesson-list li:first-child div[class="line"] {
+  display: none;
+}
+
+.question-title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  left: 13vw;
+}
+
+/* sphere-looking design */
+
+.ball {
+  position: relative;
+  bottom: 15.3vh;
+  right: .7vw;
+  width: 12vw;
+  height: 12vw;
+  margin: 1vmin;
+  transform-style: preserve-3d;
+  transform: rotateX(-5deg);
+}
+
+@keyframes rot {
+  0% {
+    transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg);
+  }
+
+  100% {
+    transform: rotateY(360deg) rotateX(0deg) rotateZ(0deg);
+  }
+}
+
+.layer {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 12vw;
+  height: 12vw;
+}
+
+.moving {
+  transform-style: preserve-3d;
+  transform-origin: 49vmin 49vmin;
+  animation: rot 10s linear infinite;
+}
+
+.gridplane {
+  width: 20vw;
+  height: 20vw;
+  border-radius: 50%;
+}
+
+.clip {
+  border-radius: 50%;
+  overflow: hidden;
+  transform: translateZ(-0vmin);
+}
+
+@keyframes highlightanim {
+  0.00% {
+    left: -150.00%;
+    top: -178.00%
+  }
+
+  12.50% {
+    left: -117.67%;
+    top: -179.64%
+  }
+
+  25.00% {
+    left: -97.69%;
+    top: -195.87%
+  }
+
+  28.75% {
+    left: -95.00%;
+    top: -207.09%
+  }
+
+  32.50% {
+    left: -97.69%;
+    top: -220.70%
+  }
+
+  40.00% {
+    left: -117.67%;
+    top: -240.01%
+  }
+
+  47.50% {
+    left: -150.00%;
+    top: -247.50%
+  }
+
+  55.00% {
+    left: -182.33%;
+    top: -240.01%
+  }
+
+  62.50% {
+    left: -202.31%;
+    top: -220.70%
+  }
+
+  68.75% {
+    left: -205.00%;
+    top: -207.09%
+  }
+
+  75.00% {
+    left: -202.31%;
+    top: -195.87%
+  }
+
+  87.50% {
+    left: -182.33%;
+    top: -179.64%
+  }
+
+  100.00% {
+    left: -150.00%;
+    top: -178.00%
+  }
+}
+
+.shade {
+  position: relative;
+  top: -150%;
+  left: -150%;
+  width: 400%;
+  height: 400%;
+  background: radial-gradient(at 50% 50%, white, black, grey, black, black);
+  animation: highlightanim 7s linear infinite;
+}
+
+.shade:hover{
+   background: radial-gradient(at 50% 50%, rgb(157, 150, 219), rgb(5, 5, 77), rgb(39, 21, 199), rgb(5,5,77), rgb(5,5,77));
+}

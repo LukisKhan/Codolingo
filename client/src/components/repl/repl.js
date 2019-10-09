@@ -12,20 +12,30 @@ export class Repl extends Component {
   handleSubmit(e){
     e.preventDefault();
     let inputText = this.state.inputText;
-    let outputText = JSON.stringify(inputText);
-    let parsed = JSON.parse(outputText);
+    let idx = inputText.indexOf('=');
+    if (idx) {
+      inputText = inputText.slice(idx+1);
+    }
+    let parsed;
+    try {
+      parsed = JSON.parse(inputText);
+      parsed = inputText.toString();
+    } catch (error) {
+      parsed = eval(inputText);
+    }
     this.setState({outputText: parsed});
   }
   render() {
     return (
       <div>
+        <h2>Test single line expression in js</h2>
         <form onSubmit={this.handleSubmit}>
           <input
             value={this.state.inputText}
             onChange={e => this.setState({inputText: e.target.value})} />
           <button>Test your code</button>
         </form>
-        <div>{this.state.outputText}</div>
+        <div>{this.state.outputText.toString()}</div>
       </div>
     )
   }
