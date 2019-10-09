@@ -1,4 +1,6 @@
 @import './css/terminal.css';
+@import './css/lesson.css';
+@import './css/exampleWindow.css';
 
 body {
   margin: 0;
