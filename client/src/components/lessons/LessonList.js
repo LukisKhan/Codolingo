@@ -6,7 +6,7 @@ const { FETCH_LESSONS, IS_LOGGED_IN } = Queries;
 
 const LessonList = (props) => {
   return (
-    <div className="lesson-list">
+    <div>
       <Link to="/courses">Choose a new language</Link>
       <ApolloConsumer>
           {client => (
@@ -30,7 +30,7 @@ const LessonList = (props) => {
             </Query>
           )}
         </ApolloConsumer>
-      <ul>
+      <ul className="lesson-list">
         <Query query={FETCH_LESSONS}>
           {({ loading, error, data }) => {
             if (loading) return <p>Loading...</p>;
@@ -39,17 +39,17 @@ const LessonList = (props) => {
               <li key={_id}>
                 <Link to={`/lessons/${_id}`}>
                   <h4 className="question-title">{title}</h4>
-                  <div class='ball'>
-                    <div class='layer moving'>
-                      <div class='layer gridplane xline'></div>
-                      <div class='layer gridplane xline2'></div>
-                      <div class='layer gridplane yline'></div>
-                      <div class='layer gridplane zline'></div>
-                      <div class='layer gridplane laser'></div>
-                      <div class='layer gridplane laser2'></div>
+                  <div className='ball'>
+                    <div className='layer moving'>
+                      <div className='layer gridplane xline'></div>
+                      <div className='layer gridplane xline2'></div>
+                      <div className='layer gridplane yline'></div>
+                      <div className='layer gridplane zline'></div>
+                      <div className='layer gridplane laser'></div>
+                      <div className='layer gridplane laser2'></div>
                     </div>
-                    <div class='layer clip'>
-                      <div class='shade'>
+                    <div className='layer clip'>
+                      <div className='shade'>
                       </div>
                     </div>
                   </div>
