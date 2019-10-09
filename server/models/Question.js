@@ -61,12 +61,13 @@ QuestionSchema.statics.removeAnswer = function (questionId, answerId) {
   });
 };
 
-QuestionSchema.statics.updateQuestion = function (questionId, prompt) {
+QuestionSchema.statics.updateQuestion = function (questionId, prompt, example) {
   const Question = mongoose.model("questions");
 
   return Question.findById(questionId).then(question => {
-    if (question.prompt) {
+    if (question.prompt || question.example) {
       question.prompt = prompt;
+      question.example = example;
 
       question.save().then(question => question);
     }

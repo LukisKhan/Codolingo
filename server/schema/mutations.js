@@ -189,10 +189,11 @@ const mutation = new GraphQLObjectType({
       type: QuestionType,
         args: {
           questionId: { type: GraphQLID },
-          prompt: { type: new GraphQLNonNull(GraphQLString) }
+          prompt: { type: new GraphQLNonNull(GraphQLString) },
+          example: { type: GraphQLString }
         },
-        resolve(parentValue, { questionId, prompt }) {
-          return Question.updateQuestion(questionId, prompt);
+        resolve(parentValue, { questionId, prompt, example }) {
+          return Question.updateQuestion(questionId, prompt, example);
         }
     },
     // Answer Mutations
