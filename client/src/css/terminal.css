@@ -1,7 +1,8 @@
 #terminal{
   background-color: rgb(17, 19, 19);
   width: 35vw;
-  height: 15vw;
+  min-width: 380px;
+  height: 25vh;
   color: white;
   margin: 10px;
   border-radius: 2%;

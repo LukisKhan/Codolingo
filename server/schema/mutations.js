@@ -77,6 +77,7 @@ const mutation = new GraphQLObjectType({
       type: CourseType,
       args: {
         language: { type: new GraphQLNonNull(GraphQLString) },
+        icon: {type: new GraphQLNonNull(GraphQLString)},
         lessons: { type: new GraphQLList(GraphQLString) }
       },
       resolve(parent, args) {

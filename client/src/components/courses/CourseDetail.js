@@ -1,37 +1,16 @@
 import React from "react";
-import { Query, ApolloConsumer } from "react-apollo";
+import { Query } from "react-apollo";
 import { Link } from "react-router-dom";
 import Queries from "../../graphql/queries";
-const { FETCH_LESSONS, IS_LOGGED_IN } = Queries;
+import CourseHeader from "./CourseHeader";
+const { FETCH_LESSONS } = Queries;
 
 class CourseDetail extends React.Component {
     render() {
         return (
             <div >
-                <Link to="/courses">Choose a new language</Link>
-                <ApolloConsumer>
-                    {client => (
-                    <Query query={IS_LOGGED_IN}>
-                    {({ data }) => (
-                        <div>
-                            <Link to="/">
-                                <button
-                                    onClick={e => {
-                                        e.preventDefault();
-                                        localStorage.removeItem("auth-token");
-                                        client.writeData({ data: { isLoggedIn: false } });
-                                        this.props.history.push("/");
-                                    }}
-                                >
-                                Logout
-                                </button>
-                            </Link>
-                        </div>
-                    )}
-                    </Query>
-                )}
-                </ApolloConsumer>
-                {this.props.match.params.id}
+                <CourseHeader courseId={this.props.match.params.id} />
+                <div className="courseTitle">{this.props.match.params.id}</div>
                 <ul className="lesson-list">
                     <Query query={FETCH_LESSONS}>
                         {({ loading, error, data }) => {

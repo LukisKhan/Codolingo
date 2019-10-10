@@ -1,17 +1,31 @@
 .hint-window{
   display: flex;
   width: 35vw;
+  min-width: 300px;
   height: 15vw;
   margin: 10px;
+  min-height: 175px;
   background-color: rgb(59, 55, 55);
 }
 
 .repl-window {
   display: flex;
   width: 35vw;
-  height: 15vw;
-  margin: 10px;
+  min-width: 300px;
+  height: 20vw;
+  min-height: 175px;
   background-color: rgb(64, 64, 116);
+  margin: 10px;
+}
+@media (max-width: 850px) {
+  .repl-window {
+    right: 20px;
+    bottom: 10px;
+  }
+  .example-window {
+    right: 20px;
+    bottom: 10px;
+  }
 }
 .repl{
   width: 100%;

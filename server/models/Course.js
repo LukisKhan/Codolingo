@@ -6,6 +6,11 @@ const CourseSchema = new Schema({
         type: String,
         required: true
     },
+    // String is the path name
+    icon: {
+      type: String,
+      required: true
+    },
     lessons: [
         {
           type: Schema.Types.ObjectId,

@@ -30,7 +30,7 @@ class LoginModal extends React.Component {
                 onCompleted={data => {
                     const {token} = data.login;
                     localStorage.setItem("auth-token", token);
-                    {/* this.props.history.push("/courses"); */}
+                    this.props.history.push("/chooseCourse");
                 }}
                 update={(client, data) => this.updateCache(client, data)}
             >
@@ -44,8 +44,10 @@ class LoginModal extends React.Component {
                             onSubmit={e => {
                                 e.preventDefault();
                                 loginUser({
-                                    email: this.state.email,
-                                    password: this.state.password
+                                    variables: {
+                                        email: this.state.email,
+                                        password: this.state.password
+                                    }
                                 });
                             }}
                         >
