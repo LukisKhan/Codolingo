@@ -153,6 +153,7 @@ const mutation = new GraphQLObjectType({
         args: {
             prompt: { type: new GraphQLNonNull(GraphQLString) },
             example: { type: GraphQLString },
+            hint: { type: GraphQLString },
         },
         resolve(parent, args) {
           return new Question(args).save();
@@ -189,10 +190,12 @@ const mutation = new GraphQLObjectType({
       type: QuestionType,
         args: {
           questionId: { type: GraphQLID },
-          prompt: { type: new GraphQLNonNull(GraphQLString) }
+          prompt: { type: new GraphQLNonNull(GraphQLString) },
+          example: { type: GraphQLString },
+          hint: { type: GraphQLString },
         },
-        resolve(parentValue, { questionId, prompt }) {
-          return Question.updateQuestion(questionId, prompt);
+        resolve(parentValue, { questionId, prompt, example, hint }) {
+          return Question.updateQuestion(questionId, prompt, example, hint);
         }
     },
     // Answer Mutations
