@@ -1,13 +1,12 @@
 #terminal{
   background-color: rgb(17, 19, 19);
   width: 35vw;
-  height: 25vh;
+  height: 15vw;
   color: white;
   margin: 10px;
   border-radius: 2%;
   contain: strict;
   border: 1px solid black;
-  box-shadow: 5px 5px 50px black;
 }
 #top-terminal-bar{
   background-color: rgb(77, 87, 87);

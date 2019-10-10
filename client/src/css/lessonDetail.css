@@ -1,0 +1,21 @@
+.lesson-detail-page{
+  display: flex;
+  justify-content: space-evenly;
+}
+.lesson-window{
+  border: 1px solid red;
+  padding: 10px;
+}
+.instruction-window{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-content: center;
+  border: 1px solid black;
+}
+.hint-window {
+  border: 1px solid purple;
+}
+.repl-window {
+  border: 1px solid green;
+}

@@ -30,7 +30,7 @@ class LoginModal extends React.Component {
                 onCompleted={data => {
                     const {token} = data.login;
                     localStorage.setItem("auth-token", token);
-                    this.props.history.push("/courses");
+                    {/* this.props.history.push("/courses"); */}
                 }}
                 update={(client, data) => this.updateCache(client, data)}
             >

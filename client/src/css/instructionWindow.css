@@ -1,19 +1,16 @@
-.example-window{
-  position: absolute;
+.hint-window{
   display: flex;
-  top: 5vw;
-  right: 10vw;
   width: 35vw;
   height: 15vw;
+  margin: 10px;
   background-color: rgb(59, 55, 55);
 }
 
 .repl-window {
-  position: absolute;
-  bottom: 5vw;
-  right: 10vw;
+  display: flex;
   width: 35vw;
-  height: 20vw;
+  height: 15vw;
+  margin: 10px;
   background-color: rgb(64, 64, 116);
 }
 .repl{

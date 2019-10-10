@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Queries from "../../graphql/queries";
 import { withRouter } from "react-router-dom";
 import Repl from "../repl/repl";
-import ExampleWindow from "../instructionWindow/exampleWindow";
+import InstructionWindow from "../instructionWindow/instructionWindow";
 const { FETCH_LESSON } = Queries;
 
 class LessonDetail extends React.Component {
@@ -16,10 +16,10 @@ class LessonDetail extends React.Component {
     e.stopPropagation();
     if (isCorrect){
       console.log("Correct");
-      this.setState({correctAnswer: ` ${answer} \n> Correct!`, incorrectAnswer: ""})
+      this.setState({correctAnswer: `> You choose: ${answer} \n> Correct!`, incorrectAnswer: ""})
     } else {
       console.log("Try again");
-      this.setState({ incorrectAnswer: ` ${answer} \n> Sorry, try again`, correctAnswer: "" })
+      this.setState({ incorrectAnswer: `> You choose: ${answer} \n> Sorry, try again`, correctAnswer: "" })
     }
   }
   render() {
@@ -38,13 +38,11 @@ class LessonDetail extends React.Component {
                 return (
                   <div className="lesson-detail-page">
                     <div className="lesson-window">
-                      <p>Lesson details</p>
-                      <p>Title: {data.lesson.title}</p>
-                      <p>ID: {data.lesson._id}</p>
+                      <p><h2>Title: {data.lesson.title}</h2></p>
+                      <p><h3>Prompt: {questionCurrent.prompt}</h3></p>
                       <div id="terminal">
                         <div id="top-terminal-bar"></div>
-                          <p id="question-intro">What would the follow expression return: </p>
-                          <p id="prompt"> > {questionCurrent.prompt}</p>
+                          <p id="example">{`  > ${questionCurrent.example}`}</p>
                           <p id="correct-answer">{this.state.correctAnswer}</p>
                           <p id="incorrect-answer">{this.state.incorrectAnswer}</p>
                       </div>
@@ -53,7 +51,6 @@ class LessonDetail extends React.Component {
                             return (
                               <li key={answer._id} onClick={e => this.chooseAnswer(e, answer.isCorrect, answer.answer)}>
                                 <h4>{answer.answer}</h4>
-                                {/* <h4>Correct: {answer.isCorrect.toString()}</h4> */}
                               </li>
                             )
                           })}
@@ -63,16 +60,18 @@ class LessonDetail extends React.Component {
                         className="next-button">
                           Next</button>
                     </div>
-                    <ExampleWindow exampleText={questionCurrent.example} />
+                    <div className="instruction-window">
+                      <InstructionWindow hintText={questionCurrent.example} />
+                      <div className="repl-window">
+                        <Repl />
+                      </div>
+                    </div>
                   </div>
                 )
 
               }
             }}
           </Query>
-          <div className="repl-window">
-            <Repl />
-          </div>
       </div>
     )
   }
