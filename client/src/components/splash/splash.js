@@ -62,7 +62,7 @@ class Splash extends React.Component {
                     toggleRegisterModal={() => this.toggleRegisterModal()}
                     toggleBothModals={() => this.toggleBothModals()} />
                 { this.state.registerModal && 
-                    <RegisterModal 
+                    <RegisterModal
                     toggleRegisterModal={() => this.toggleRegisterModal()} 
                     toggleBothModals={() => this.toggleBothModals()} /> }
                 { this.state.loginModal && 

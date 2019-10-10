@@ -260,7 +260,7 @@ button:active {
   border-radius: 15px;
 }
 
-.authModal div:first-child {
+.closeButton {
   position: absolute;
   left: 97.5%;
   top: -17px;
@@ -271,7 +271,7 @@ button:active {
   border: 2px solid #e5e5e5;
 }
 
-.authModal div:first-child:hover {
+.closeButton:hover {
   opacity: .8;
 }
 

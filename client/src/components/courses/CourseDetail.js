@@ -14,18 +14,18 @@ class CourseDetail extends React.Component {
                     <Query query={IS_LOGGED_IN}>
                     {({ data }) => (
                         <div>
-                        <Link to="/">
-                            <button
-                            onClick={e => {
-                                e.preventDefault();
-                                localStorage.removeItem("auth-token");
-                                client.writeData({ data: { isLoggedIn: false } });
-                                this.props.history.push("/");
-                            }}
-                            >
-                            Logout
-                            </button>
-                        </Link>
+                            <Link to="/">
+                                <button
+                                    onClick={e => {
+                                        e.preventDefault();
+                                        localStorage.removeItem("auth-token");
+                                        client.writeData({ data: { isLoggedIn: false } });
+                                        this.props.history.push("/");
+                                    }}
+                                >
+                                Logout
+                                </button>
+                            </Link>
                         </div>
                     )}
                     </Query>

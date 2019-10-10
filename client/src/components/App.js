@@ -11,12 +11,14 @@ import LessonList from './lessons/LessonList';
 import LessonDetail from './lessons/LessonDetail';
 import CourseList from './courses/CourseList';
 import CourseDetail from './courses/CourseDetail';
+import CourseListAuth from './courses/CourseListAuth';
 import Repl from './repl/repl';
 
 const App = () => {
   return (
     <HashRouter>
       <Switch>
+        <Route exact path="/chooseCourse" component={CourseListAuth} />
         <Route exact path="/questions/new" component={QuestionCreate} />
         <Route exact path="/questions" component={QuestionList} />
         <Route exact path="/courses/:id" component={CourseDetail} />
