@@ -44,8 +44,10 @@ class LoginModal extends React.Component {
                             onSubmit={e => {
                                 e.preventDefault();
                                 loginUser({
-                                    email: this.state.email,
-                                    password: this.state.password
+                                    variables: {
+                                        email: this.state.email,
+                                        password: this.state.password
+                                    }
                                 });
                             }}
                         >

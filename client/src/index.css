@@ -330,3 +330,60 @@ button:active {
   color: #1899d6 !important;
   font-size: 14px !important;
 }
+
+/* COURSE PAGES */
+.courseHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  padding: 5px 20px 0px 20px;
+  border-bottom: 2px solid #e5e5e5;
+}
+
+.courseHeaderLogo {
+  height: 70px;
+}
+
+.logoutButton {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #18d0d6;
+  font-size: 26px;
+  font-weight: 700;
+  font-family: din-round, sans-serif;
+  cursor: pointer;
+}
+
+.course-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.courseListLink {
+  width: 175px;
+  height: 245px;
+  text-decoration: none;
+  color: #4b4b4b;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.courseListItem {
+  width: 175px;
+  height: 245px;
+  padding: 10px;
+  border: 2px solid #e5e5e5;
+  border-bottom-width: 4px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.courseListItem img {
+  width: 60%;
+}
+
+.courseListItem h5 {
+  color: #afafaf;
+}
