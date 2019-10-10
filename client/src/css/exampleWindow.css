@@ -4,7 +4,9 @@
   top: 5vw;
   right: 10vw;
   width: 35vw;
+  min-width: 300px;
   height: 15vw;
+  min-height: 175px;
   background-color: rgb(59, 55, 55);
 }
 
@@ -13,8 +15,20 @@
   bottom: 5vw;
   right: 10vw;
   width: 35vw;
+  min-width: 300px;
   height: 20vw;
+  min-height: 175px;
   background-color: rgb(64, 64, 116);
+}
+@media (max-width: 850px) {
+  .repl-window {
+    right: 20px;
+    bottom: 10px;
+  }
+  .example-window {
+    right: 20px;
+    bottom: 10px;
+  }
 }
 .repl{
   width: 100%;

@@ -24,7 +24,7 @@ class LessonDetail extends React.Component {
   }
   render() {
     return (
-      <div className="lesson-detail">
+      <div className="lessonContainer">
           <Query query={FETCH_LESSON} variables={{ id: this.props.match.params.id }}>
             {({ loading, error, data }) => {
               if (loading) return <p>Loading...</p>;

@@ -10,7 +10,7 @@ class CourseDetail extends React.Component {
         return (
             <div >
                 <CourseHeader courseId={this.props.match.params.id} />
-                {this.props.match.params.id}
+                <div className="courseTitle">{this.props.match.params.id}</div>
                 <ul className="lesson-list">
                     <Query query={FETCH_LESSONS}>
                         {({ loading, error, data }) => {
