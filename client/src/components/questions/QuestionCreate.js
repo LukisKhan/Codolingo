@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
-import { NEW_QUESTION, REGISTER_USER } from '../../graphql/mutations';
+import { NEW_QUESTION } from '../../graphql/mutations';
 import Queries from '../../graphql/queries';
 const { FETCH_QUESTIONS } = Queries;
 
