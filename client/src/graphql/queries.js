@@ -12,6 +12,7 @@ export default {
       courses {
         _id
         language
+        icon
         lessons {
           _id, title,
           questions {
@@ -29,6 +30,7 @@ export default {
       course(_id: $id) {
         _id
         language
+        icon
         lessons {
           title
           _id

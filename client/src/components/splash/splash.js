@@ -5,6 +5,9 @@ import SplashFooter from './splash_footer';
 import LoginModal from './login_modal';
 import RegisterModal from './register_modal';
 
+import Ruby from '../../assets/ruby-logo.png';
+import JS from '../../assets/javascript-logo.png';
+import SQL from '../../assets/sql-logo.png';
 import Planet from '../../assets/earth-two-rings.svg';
 
 class Splash extends React.Component {
@@ -82,7 +85,13 @@ class Splash extends React.Component {
                     </div>
                 </div>
                 <div className="splashPromotion">
-                    <h2>Stuff about the website</h2>
+                    <h2>Learn JavaScript, Ruby, and SQL!</h2>
+                    If you learn coding, you'll have more inherent value as a person.
+                    <div className="languageIcons">
+                        <img src={Ruby} alt="Ruby logo" />
+                        <img src={JS} alt="JavaScript logo" />
+                        <img src={SQL} alt="SQL logo" />
+                    </div>
                 </div>
                 <SplashFooter toggleRegisterModal={() => this.toggleRegisterModal()}
                     toggleBothModals={() => this.toggleBothModals()} />
