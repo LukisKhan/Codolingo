@@ -401,14 +401,15 @@ button:active {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
   height: 70px;
   margin-bottom: 20px;
   padding: 5px 20px 0px 20px;
   border-bottom: 2px solid #e5e5e5;
 }
 
-.courseHeaderLogo {
-  height: 70px;
+.courseHeader img {
+  height: 60px;
 }
 
 .courseHeader a {
@@ -420,14 +421,30 @@ button:active {
 }
 
 .courseHeader a:hover {
-  position: relative;
-  top: 2px;
+  opacity: .8;
 }
 
 @media (max-width: 800px) {
   .courseHeader a {
     font-size: 18px;
   }
+}
+
+.profilePopup {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 73px;
+  right: 1%;
+  width: 250px;
+  padding: 10px 0px;
+  background-color: #fff;
+  border: 2px solid #afafaf;
+  border-radius: 15px;
+  text-align: center;
+}
+.profilePopup a {
+  border-bottom: 2px solid #afafaf;
 }
 
 .logoutButton {
