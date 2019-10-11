@@ -115,7 +115,9 @@ class LessonDetail extends React.Component {
                     <InstructionWindow 
                       propsClassName={`${hintWindowClassName}`}
                       hintText={questionCurrent.hint} />
-                    <div className={`${replWindowClassName} repl-window`}>
+                    <div 
+                      className={`${replWindowClassName} repl-window`}
+                      onClick={e => e.stopPropagation()}>
                       <Repl />
                     </div>
                     <div className="instruction-window">
