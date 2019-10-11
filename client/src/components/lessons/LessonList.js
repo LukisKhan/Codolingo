@@ -6,7 +6,7 @@ const { FETCH_LESSONS, IS_LOGGED_IN } = Queries;
 
 const LessonList = (props) => {
   return (
-    <div>
+    <div >
       <Link to="/courses">Choose a new language</Link>
       <ApolloConsumer>
           {client => (
@@ -30,6 +30,7 @@ const LessonList = (props) => {
             </Query>
           )}
         </ApolloConsumer>
+      <div >
       <ul className="lesson-list">
         <Query query={FETCH_LESSONS}>
           {({ loading, error, data }) => {
@@ -61,6 +62,7 @@ const LessonList = (props) => {
           }}
         </Query>
       </ul>
+      </div>
     </div>
   );
 };
