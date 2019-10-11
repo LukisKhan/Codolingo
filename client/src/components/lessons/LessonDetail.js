@@ -1,6 +1,5 @@
 import React from "react";
 import { Query } from "react-apollo";
-import { Link } from "react-router-dom";
 import Queries from "../../graphql/queries";
 import { withRouter } from "react-router-dom";
 import Repl from "../repl/repl";
@@ -10,7 +9,8 @@ const { FETCH_LESSON } = Queries;
 class LessonDetail extends React.Component {
   constructor(props){
     super(props);
-    this.state = { questionIdx: 0, correctAnswer: "", incorrectAnswer: ""};
+    this.state = { questionIdx: 0, correctAnswer: "", incorrectAnswer: "", 
+                   hintWindow: false, displayReplWindow: false};
   }
   chooseAnswer(e, isCorrect, answer){
     e.stopPropagation();
@@ -21,6 +21,9 @@ class LessonDetail extends React.Component {
       console.log("Try again");
       this.setState({ incorrectAnswer: `> You choose: ${answer} \n> Sorry, try again`, correctAnswer: "" })
     }
+  }
+  goBack(){
+    this.props.history.goBack();
   }
   render() {
     return (
@@ -33,7 +36,13 @@ class LessonDetail extends React.Component {
               let questionCurrent = questionArray[this.state.questionIdx];
               console.log(this.state.questionIdx);
               if (this.state.questionIdx >= questionArray.length) {
-                return <div>End of lesson</div>
+                return ( 
+                  <div className="end-of-lesson">End of lesson
+                      <button 
+                        className="end-of-lesson-button"
+                        onClick={this.goBack.bind(this)} >Back to Lessons</button>
+                  </div>
+                )
               } else {
                 return (
                   <div className="lesson-detail-page">
@@ -60,10 +69,16 @@ class LessonDetail extends React.Component {
                           })}
                         </ul>
                       </div>
-                      <button 
-                        onClick={e => { this.setState({ questionIdx: this.state.questionIdx + 1, correctAnswer: "", incorrectAnswer:"" }) }}
-                        className="next-button">
+                      <div className="lesson-button">
+                        <button 
+                          onClick={e => { this.setState({ questionIdx: this.state.questionIdx - 1, correctAnswer: "", incorrectAnswer:"" }) }}
+                          className="back-button">
+                            back</button>
+                        <button
+                          onClick={e => { this.setState({ questionIdx: this.state.questionIdx + 1, correctAnswer: "", incorrectAnswer: "" }) }}
+                          className="next-button">
                           Next</button>
+                      </div>
                     </div>
                     <div className="instruction-window">
                       <InstructionWindow hintText={questionCurrent.example} />
@@ -82,4 +97,4 @@ class LessonDetail extends React.Component {
   }
 };
 
-export default LessonDetail;
+export default withRouter(LessonDetail);

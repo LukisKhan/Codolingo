@@ -1,6 +1,9 @@
 .lesson-detail-page{
   display: flex;
   justify-content: space-evenly;
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
 }
 .lesson-window{
   border: 1px solid red;
@@ -48,4 +51,33 @@
 }
 .answer-text {
   margin: 5px 10px;
+}
+.next-button {
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 20px;
+  border-radius: 15px;
+  background-color: rgb(113, 209, 4);
+}
+.next-button:hover {
+  background-color: rgb(9, 66, 9)
+}
+.back-button {
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 20px;
+  border-radius: 15px;
+  background-color: rgb(209, 51, 64);
+}
+.back-button:hover {
+  background-color: rgb(141, 21, 21)
+}
+.end-of-lesson-button{
+  background-color: rgb(141, 21, 21);
+  width: 20vw;
+  height: 12vw;
+  border-radius: 5%;
+  margin: 30vw;
 }
