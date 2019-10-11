@@ -2,7 +2,7 @@ import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 
 import Menu from '../../assets/hamburger-menu.svg';
-import Logo from '../assets/codolingo-logo2.png';
+import Logo from '../assets/codolingo-logo5.png';
 
 // import { Query, ApolloConsumer } from "react-apollo";
 // import Queries from "../../graphql/queries";

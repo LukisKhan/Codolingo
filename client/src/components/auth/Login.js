@@ -27,7 +27,7 @@ class Login extends Component {
 
   render() {
     return (
-      <Mutation
+      <Mutationl
         mutation={LOGIN_USER}
         onCompleted={data => {
             const { token } = data.login;
