@@ -63,7 +63,7 @@
 }
 /* visited link */
 .lesson-list li a:visited {
-  color: grey;
+  color: rgb(67, 197, 197);
 }
 /* mouse over link */
 .lesson-list li a:hover {
