@@ -8,7 +8,7 @@ import Close from '../../assets/close.svg';
 class LoginModal extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {email: "", password: ""};
+        this.state = {email: "", password: "", name: "", _id: ""};
     }
 
     update(field) {
@@ -33,6 +33,11 @@ class LoginModal extends React.Component {
                     this.props.history.push("/chooseCourse");
                 }}
                 update={(client, data) => this.updateCache(client, data)}
+                refetchQueries={(data) => {
+                    console.log("refetchQueries", data);
+                    console.log(data.data.login.name);
+                    this.setState({name: data.data.login.name, _id: data.data.login._id})
+                }}
             >
                 {loginUser => (
                     <div className="authModal">

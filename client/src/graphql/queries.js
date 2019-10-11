@@ -13,6 +13,7 @@ export default {
         _id
         language
         icon
+        description
         lessons {
           _id, title,
           questions {
@@ -25,12 +26,34 @@ export default {
       }
     }
   `,
+  FETCH_USERS: gql `
+    query FetchUsers {
+      users {
+        _id
+        name
+        email
+        loggedIn
+        token
+      }
+    }
+  `,
+  FETCH_USER: gql `
+    query FetchUser($token:STRING!) {
+      course(token: $token) {
+        _id
+        name
+        email
+        loggedIn
+      }
+    }
+  `,
   FETCH_COURSE: gql`
     query FetchCourse($id:ID!) {
       course(_id: $id) {
         _id
         language
         icon
+        description
         lessons {
           title
           _id
