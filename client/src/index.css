@@ -515,3 +515,7 @@ button:active {
 .courseListItem h5 {
   color: #afafaf;
 }
+
+.btn:focus {
+  outline: none;
+}
