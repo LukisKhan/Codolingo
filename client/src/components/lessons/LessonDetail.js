@@ -38,23 +38,28 @@ class LessonDetail extends React.Component {
                 return (
                   <div className="lesson-detail-page">
                     <div className="lesson-window">
-                      <p><h2>Title: {data.lesson.title}</h2></p>
-                      <p><h3>Prompt: {questionCurrent.prompt}</h3></p>
+                      <div><h2>Title: {data.lesson.title}</h2></div>
+                      <div><h3>Prompt: {questionCurrent.prompt}</h3></div>
                       <div id="terminal">
                         <div id="top-terminal-bar"></div>
                           <p id="example">{`  > ${questionCurrent.example}`}</p>
                           <p id="correct-answer">{this.state.correctAnswer}</p>
                           <p id="incorrect-answer">{this.state.incorrectAnswer}</p>
                       </div>
-                        <ul>
+                      <div className="answer-window">
+                        <ul className="answer-choice-list">
                           {questionCurrent.answers.map((answer) => {
                             return (
-                              <li key={answer._id} onClick={e => this.chooseAnswer(e, answer.isCorrect, answer.answer)}>
-                                <h4>{answer.answer}</h4>
+                              <li 
+                                className="answer-choice"
+                                key={answer._id} 
+                                onClick={e => this.chooseAnswer(e, answer.isCorrect, answer.answer)}>
+                                <div className="answer-text">{answer.answer}</div>
                               </li>
                             )
                           })}
                         </ul>
+                      </div>
                       <button 
                         onClick={e => { this.setState({ questionIdx: this.state.questionIdx + 1, correctAnswer: "", incorrectAnswer:"" }) }}
                         className="next-button">
