@@ -32,13 +32,14 @@ class LessonDetail extends React.Component {
             {({ loading, error, data }) => {
               if (loading) return <p>Loading...</p>;
               if (error) return <p>Error</p>;
-              let questionArray = data.lesson.questions;
-              let questionCurrent = questionArray[this.state.questionIdx];
-              let questionExample, backButton;
-              let hintWindowClassName = "hide-hint-window";
-              if (this.state.displayHintWindow) {
-                hintWindowClassName = "display-hint-window";
-              }
+              let questionArray = data.lesson.questions,
+                questionCurrent = questionArray[this.state.questionIdx],
+                questionExample = "", 
+                backButton,
+                hintWindowClassName = "hide-hint-window",
+                replWindowClassName = "hide-repl-window";
+              if (this.state.displayHintWindow) hintWindowClassName = "display-hint-window";
+              if (this.state.displayReplWindow) replWindowClassName = "display-repl-window";
               if (this.state.questionIdx > 0) {
                 backButton =  (
                   <button
@@ -99,14 +100,21 @@ class LessonDetail extends React.Component {
                           onClick={e => { this.setState({ displayHintWindow: false }) }}>
                           Close Hint Window
                         </button>
-                          
+                        <button
+                          onClick={e => { this.setState({ displayReplWindow: true }) }}>
+                          Open Repl Window
+                        </button>
+                        <button
+                          onClick={e => { this.setState({ displayReplWindow: false }) }}>
+                          Close Repl Window
+                        </button>
                       </div>
                     </div>
                     <div className="instruction-window">
                       <InstructionWindow 
                         propsClassName={`${hintWindowClassName}`}
                         hintText={questionCurrent.hint} />
-                      <div className="repl-window">
+                      <div className={`${replWindowClassName} repl-window`}>
                         <Repl />
                       </div>
                     </div>

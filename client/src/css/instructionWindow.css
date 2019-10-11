@@ -9,7 +9,6 @@
 }
 
 .repl-window {
-  display: flex;
   width: 35vw;
   min-width: 300px;
   height: 20vw;
@@ -21,6 +20,13 @@
   display: none;
 }
 .display-hint-window {
+  display: flex;
+}
+.hide-repl-window {
+  display: none;
+}
+
+.display-repl-window {
   display: flex;
 }
 @media (max-width: 850px) {
