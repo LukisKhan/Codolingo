@@ -17,11 +17,15 @@ export class Repl extends Component {
       inputText = inputText.slice(idx+1);
     }
     let parsed;
-    try {
-      parsed = JSON.parse(inputText);
-      parsed = inputText.toString();
+    try{
+      try {
+        parsed = JSON.parse(inputText);
+        parsed = inputText.toString();
+      } catch (error) {
+        parsed = eval(inputText);
+      }
     } catch (error) {
-      parsed = eval(inputText);
+      parsed = error.toString();
     }
     this.setState({outputText: parsed});
   }
