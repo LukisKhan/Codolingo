@@ -17,6 +17,12 @@
   background-color: rgb(64, 64, 116);
   margin: 10px;
 }
+.hide-hint-window {
+  display: none;
+}
+.display-hint-window {
+  display: flex;
+}
 @media (max-width: 850px) {
   .repl-window {
     right: 20px;
