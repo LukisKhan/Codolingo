@@ -8,6 +8,7 @@
 .lesson-window{
   border: 1px solid red;
   padding: 10px;
+  max-width: 80vw;
 }
 
 .answer-window{
