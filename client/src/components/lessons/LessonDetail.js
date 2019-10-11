@@ -1,6 +1,5 @@
 import React from "react";
 import { Query } from "react-apollo";
-import { Link } from "react-router-dom";
 import Queries from "../../graphql/queries";
 import { withRouter } from "react-router-dom";
 import Repl from "../repl/repl";
@@ -10,7 +9,8 @@ const { FETCH_LESSON } = Queries;
 class LessonDetail extends React.Component {
   constructor(props){
     super(props);
-    this.state = { questionIdx: 0, correctAnswer: "", incorrectAnswer: ""};
+    this.state = { questionIdx: 0, correctAnswer: "", incorrectAnswer: "", 
+                   displayHintWindow: false, displayReplWindow: false};
   }
   chooseAnswer(e, isCorrect, answer){
     e.stopPropagation();
@@ -22,6 +22,9 @@ class LessonDetail extends React.Component {
       this.setState({ incorrectAnswer: `> You choose: ${answer} \n> Sorry, try again`, correctAnswer: "" })
     }
   }
+  goBack(){
+    this.props.history.goBack();
+  }
   render() {
     return (
       <div className="lessonContainer">
@@ -31,9 +34,31 @@ class LessonDetail extends React.Component {
               if (error) return <p>Error</p>;
               let questionArray = data.lesson.questions;
               let questionCurrent = questionArray[this.state.questionIdx];
+              let questionExample, backButton;
+              let hintWindowClassName = "hide-hint-window";
+              if (this.state.displayHintWindow) {
+                hintWindowClassName = "display-hint-window";
+              }
+              if (this.state.questionIdx > 0) {
+                backButton =  (
+                  <button
+                    onClick={e => { this.setState({ questionIdx: this.state.questionIdx - 1, correctAnswer: "", incorrectAnswer: "" }) }}
+                    className="back-button">Back
+                  </button>
+                );
+              }
               console.log(this.state.questionIdx);
+              if (this.state.questionIdx < questionArray.length && questionCurrent.example){
+                questionExample = questionCurrent.example;
+              }
               if (this.state.questionIdx >= questionArray.length) {
-                return <div>End of lesson</div>
+                return ( 
+                  <div className="end-of-lesson">End of lesson
+                      <button 
+                        className="end-of-lesson-button"
+                        onClick={this.goBack.bind(this)} >Back to Lessons</button>
+                  </div>
+                )
               } else {
                 return (
                   <div className="lesson-detail-page">
@@ -42,7 +67,7 @@ class LessonDetail extends React.Component {
                       <div><h3>Prompt: {questionCurrent.prompt}</h3></div>
                       <div id="terminal">
                         <div id="top-terminal-bar"></div>
-                          <p id="example">{`  > ${questionCurrent.example}`}</p>
+                          <p id="example">{`  > ${questionExample}`}</p>
                           <p id="correct-answer">{this.state.correctAnswer}</p>
                           <p id="incorrect-answer">{this.state.incorrectAnswer}</p>
                       </div>
@@ -60,13 +85,27 @@ class LessonDetail extends React.Component {
                           })}
                         </ul>
                       </div>
-                      <button 
-                        onClick={e => { this.setState({ questionIdx: this.state.questionIdx + 1, correctAnswer: "", incorrectAnswer:"" }) }}
-                        className="next-button">
-                          Next</button>
+                      <div className="lesson-button">
+                        {backButton}
+                        <button
+                          onClick={e => { this.setState({ questionIdx: this.state.questionIdx + 1, correctAnswer: "", incorrectAnswer: "" }) }}
+                          className="next-button">Next
+                        </button>
+                        <button
+                          onClick={e => { this.setState({ displayHintWindow: true })}}>
+                          Open Hint Window
+                        </button>
+                        <button
+                          onClick={e => { this.setState({ displayHintWindow: false }) }}>
+                          Close Hint Window
+                        </button>
+                          
+                      </div>
                     </div>
                     <div className="instruction-window">
-                      <InstructionWindow hintText={questionCurrent.example} />
+                      <InstructionWindow 
+                        propsClassName={`${hintWindowClassName}`}
+                        hintText={questionCurrent.hint} />
                       <div className="repl-window">
                         <Repl />
                       </div>
@@ -82,4 +121,4 @@ class LessonDetail extends React.Component {
   }
 };
 
-export default LessonDetail;
+export default withRouter(LessonDetail);

@@ -16,7 +16,7 @@ export default {
         lessons {
           _id, title,
           questions {
-            _id, prompt, example,
+            _id, prompt, example, hint,
             answers {
               _id, answer, isCorrect
             }
@@ -86,6 +86,7 @@ export default {
           prompt
           example
           _id
+          hint
           answers {
             answer
             isCorrect

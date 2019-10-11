@@ -7,13 +7,13 @@ export class InstructionWindow extends Component {
   render() {
     if(this.props.hintText) {
       return (
-        <div className="hint-window">
+        <div className={`hint-window ${this.props.propsClassName}`}>
           Hint:  {this.props.hintText}
         </div>
       )
     } else {
       return (
-        <div className="hint-window">No hints</div>
+        <div className={`hint-window ${this.props.propsClassName}`}>No hints</div>
       )
     }
   }
