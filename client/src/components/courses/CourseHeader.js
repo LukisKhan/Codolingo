@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Query, ApolloConsumer } from "react-apollo";
 import Queries from "../../graphql/queries";
-import LogoutButton from './logoutButton';
 import Logo from '../assets/codolingo-logo2.png';
 import Profile from '../../assets/profile-icon.png';
 
