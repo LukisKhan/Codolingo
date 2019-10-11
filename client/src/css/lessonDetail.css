@@ -35,9 +35,9 @@
   height: fit-content;
   border: 1.5px solid grey;
   border-bottom: 3px solid grey;
-  border-radius: 13%;
+  border-radius: 10%;
   margin: 5px;
-  padding: 5px;
+  padding: 20px 10px;
   font-size: 24px;
   list-style: none;
 }
