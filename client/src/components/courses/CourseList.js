@@ -18,7 +18,11 @@ const CourseList = (props) => {
             if (error) return <p>Error</p>;
             return data.courses.map(({ _id, language }) => (
               <div className="courseListItemContainer" key={_id} language={language}>
-                <Link className="courseListLink" to={`/courses/${language}`}>
+                <Link className="courseListLink" 
+                  to={{
+                    pathname: `/courses/${language}`,
+                    state: { id: `${_id}`}
+                  }}>
                   <div className="courseListItem">
                     <img src={Ruby} alt="language logo" />
                     <h4>{language}</h4>

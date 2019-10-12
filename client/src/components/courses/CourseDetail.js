@@ -1,23 +1,25 @@
 import React from "react";
 import { Query } from "react-apollo";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Queries from "../../graphql/queries";
 import CourseHeader from "./CourseHeader";
-const { FETCH_LESSONS } = Queries;
+const { FETCH_LESSONS, FETCH_COURSE } = Queries;
 
 class CourseDetail extends React.Component {
     render() {
+        console.log(this.props);
         return (
             <div >
                 <CourseHeader courseId={this.props.match.params.id} />
                 <div className="courseTitle">{this.props.match.params.id}</div>
                 <div className="lesson-list-page">
                     <ul className="lesson-list">
-                        <Query query={FETCH_LESSONS}>
+                        <Query query={FETCH_COURSE} variables={{id: this.props.location.state.id}}>
                             {({ loading, error, data }) => {
                                 if (loading) return <p>Loading...</p>;
                                 if (error) return <p>Error</p>;
-                                return data.lessons.map(({ _id, title }) => (
+                                console.log(data);
+                                return data.course.lessons.map(({ _id, title }) => (
                                     <li key={_id}>
                                         <Link className="lesson-link" to={`/lessons/${_id}`}>
                                             <div className='ball'>
@@ -41,4 +43,4 @@ class CourseDetail extends React.Component {
     }
 };
 
-export default CourseDetail;
+export default withRouter(CourseDetail);

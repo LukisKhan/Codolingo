@@ -12,6 +12,7 @@ class CourseHeader extends React.Component {
         super(props);
         this.state = { profilePopup: false };
         this.togglePopup = this.togglePopup.bind(this);
+        console.log(props);
     }
 
     componentDidMount() {

@@ -516,6 +516,6 @@ button:active {
   color: #afafaf;
 }
 
-.btn:focus {
+button:focus {
   outline: none;
 }
