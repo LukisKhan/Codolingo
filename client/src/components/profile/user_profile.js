@@ -47,7 +47,7 @@ class ProfilePage extends React.Component {
                             )
                             return (
                                 <ul key={_id} className="user-language">
-                                    <Link to={`/course/${language}`}>
+                                    <Link to={`/courses/${language}`}>
                                     <h4>{language}</h4>
                                     </Link>
                                     {myLessons}
