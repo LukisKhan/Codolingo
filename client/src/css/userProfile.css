@@ -1,3 +1,54 @@
+.user-profile-page {
+  border: 1px solid black;
+}
+
+.user-language a {
+  text-decoration: none;
+  color: black;
+}
+
+.user-language {
+  border: 1px solid green;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 0px;
+}
+
 .lesson-completed {
-  border: 2px solid gold;
+  width: fit-content;
+  height: fit-content;
+  background-color: lightgoldenrodyellow;
+  border: 1.5px solid gold;
+  border-bottom: 3px solid gold;
+  border-radius: 10%;
+  margin: 5px;
+  padding: 20px 10px;
+  font-size: 24px;
+  color: rgb(0, 0, 0);
+  list-style: none;
+}
+.lesson-completed:hover {
+  background-color: rgb(202, 202, 127);
+  border: 1.5px solid darkgoldenrod;
+  border-bottom: 3px solid darkgoldenrod;
+}
+
+.lesson-not-completed {
+  width: fit-content;
+  height: fit-content;
+  border-radius: 10%;
+  margin: 5px;
+  padding: 20px 10px;
+  font-size: 24px;
+  list-style: none;
+  background-color: rgb(221, 221, 211);
+  border: 1.5px solid grey;
+  border-bottom: 3px solid grey;
+}
+.lesson-not-completed:hover{
+  background-color: darkgray;
+  border: 1.5px solid rgb(112, 112, 112);
+  border-bottom: 3px solid rgb(112, 112, 112);
 }

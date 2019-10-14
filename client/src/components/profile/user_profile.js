@@ -15,7 +15,7 @@ class ProfilePage extends React.Component {
         let userId = localStorage.getItem("userId");
 
         return(
-            <div>
+            <div className="user-profile-page">
                 <Query query={GET_USER} 
                     variables={{ id: userId }}
                     onCompleted={data => {
@@ -25,7 +25,8 @@ class ProfilePage extends React.Component {
                     {({loading, error, data}) => {
                         if (loading) return <p>Loading...</p>;
                         if(error) console.log(error);
-                        return <p>Blank page</p>
+                        console.log(data.user.name);
+                        return <p>{`${data.user.name}, you are making great progress!`}</p>
                     }}
                 </Query>
                 <Query query={FETCH_COURSES}>
@@ -37,14 +38,16 @@ class ProfilePage extends React.Component {
                             let isCompleted = "";
                             let myLessons = (
                                 lessons.map( lesson => {
-                                    this.state.lessonsCompleted.includes(lesson._id) ? isCompleted = "lesson-completed" : isCompleted = "";
+                                    this.state.lessonsCompleted.includes(lesson._id) ? isCompleted = "lesson-completed" : isCompleted = "lesson-not-completed";
                                     return (
-                                        <li key={lesson._id} className={`user-lesson ${isCompleted}`}>{lesson.title}</li>
+                                        <Link key={`${language}/${lesson._id}`} to={`/lessons/${lesson._id}`}>
+                                            <li key={lesson._id} className={`user-lesson ${isCompleted}`}>{lesson.title}</li>
+                                        </Link>
                                     )})
                             )
                             return (
                                 <ul key={_id} className="user-language">
-                                    <Link to={`/course/${language}`}>
+                                    <Link to={`/courses/${language}`}>
                                     <h4>{language}</h4>
                                     </Link>
                                     {myLessons}
