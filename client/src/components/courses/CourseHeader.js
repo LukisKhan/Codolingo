@@ -50,7 +50,7 @@ class CourseHeader extends React.Component {
                 { this.state.profilePopup && 
                     <div className="profilePopup">
                         
-                        <a className="profileLink" href="#">Profile</a>
+                        <a className="profileLink" href="#/users">Profile</a>
                         <ApolloConsumer>
                             {client => (
                                 <Query query={IS_LOGGED_IN}>

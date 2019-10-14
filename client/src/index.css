@@ -2,6 +2,7 @@
 @import './css/lesson.css';
 @import './css/lessonDetail.css';
 @import './css/instructionWindow.css';
+@import './css/userProfile.css';
 
 body {
   margin: 0;

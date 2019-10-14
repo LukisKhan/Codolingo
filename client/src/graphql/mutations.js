@@ -30,6 +30,16 @@ export const REGISTER_USER = gql`
   }
 `;
 
+export const UPDATE_LESSONS_COMPLETED = gql`
+  mutation UpdateLessonsCompleted($userId: ID!, $lessonsCompleted: String!){
+    updateLessonsCompleted(userId: $userId, lessonsCompleted: $lessonsCompleted){
+      _id
+      lessonsCompleted
+      name
+    }
+  }
+`;
+
 export const NEW_QUESTION = gql`
   mutation NewQuestion($prompt: String!) {
     newQuestion(prompt: $prompt) {
