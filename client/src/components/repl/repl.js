@@ -5,7 +5,7 @@ export class Repl extends Component {
     super(props)
     this.state = {
       inputText: "",
-      outputText: "",
+      outputText: "Please enter an expression",
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -27,22 +27,21 @@ export class Repl extends Component {
     } catch (error) {
       parsed = error.toString();
     }
-    this.setState({outputText: parsed});
+    this.setState({outputText: `> ${this.state.inputText} \n ${parsed}`});
   }
   render() {
     return (
       <div className="repl">
-        <h6>Test single line expression in js</h6>
-        <form onSubmit={this.handleSubmit}>
-          <textarea 
-            style={{ minHeight: 100, minWidth: 250 }}
+        <form className="repl-form" onSubmit={this.handleSubmit}>
+          <input type="text" 
+            style={{ fontSize: "20px", minWidth: 250 }}
             value={this.state.inputText}
             placeholder='Test your code here' 
             onChange={e => this.setState({ inputText: e.target.value })} >
-          </textarea>
-          <button>Test your code</button>
+          </input>
+          <button id="enter-code-button">Enter</button>
         </form>
-        <div>{this.state.outputText.toString()}</div>
+        <div id="output-text">{this.state.outputText}</div>
       </div>
     )
   }
