@@ -46,6 +46,17 @@ export default {
       }
     }
   `,
+  GET_USER: gql`
+    query GetUser($id:ID!) {
+      user(_id: $id) {
+        _id
+        name
+        email
+        loggedIn
+        lessonsCompleted
+      }
+    }
+  `,
   FETCH_COURSE: gql`
     query FetchCourse($id:ID!) {
       course(_id: $id) {
