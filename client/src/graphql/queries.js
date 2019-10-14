@@ -55,8 +55,19 @@ export default {
         icon
         description
         lessons {
-          title
           _id
+          title
+          questions {
+            _id
+            prompt
+            example
+            hint
+            answers {
+              _id
+              answer
+              isCorrect
+            }
+          }
         }
       }
     }

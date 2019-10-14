@@ -545,3 +545,7 @@ button:active {
 .courseRight h5 {
   color: #afafaf;
 }
+
+button:focus {
+  outline: none;
+}

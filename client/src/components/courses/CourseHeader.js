@@ -12,6 +12,7 @@ class CourseHeader extends React.Component {
         super(props);
         this.state = { profilePopup: false };
         this.togglePopup = this.togglePopup.bind(this);
+        console.log(props);
     }
 
     componentDidMount() {
@@ -37,11 +38,12 @@ class CourseHeader extends React.Component {
 
     render() {
         let authToken = localStorage.getItem("auth-token");
-
+        let studyLink;
+        if (this.props.courseId) studyLink = (<Link to={`/courses/${this.props.courseId}`}>Study</Link>);
         return(
             <div className="courseHeader">
                 <img className="courseHeaderLogo" src={Logo} alt="site logo" />
-                <Link to={`/courses/${this.props.courseId}`}>Study</Link>
+                {studyLink}
                 <Link to="/courses">Choose a new language</Link>
                 <img src={Profile} alt="profile" onClick={this.togglePopup} />
                 { this.state.profilePopup && 

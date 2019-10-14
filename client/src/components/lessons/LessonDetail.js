@@ -11,6 +11,8 @@ class LessonDetail extends React.Component {
     super(props);
     this.state = { questionIdx: 0, correctAnswer: "", incorrectAnswer: "", 
                    displayHintWindow: false, displayReplWindow: false};
+    this.closeWindow = this.closeWindow.bind(this);
+    this.openWindow = this.openWindow.bind(this);
   }
   chooseAnswer(e, isCorrect, answer){
     e.stopPropagation();
@@ -25,9 +27,17 @@ class LessonDetail extends React.Component {
   goBack(){
     this.props.history.goBack();
   }
+  closeWindow() {
+    this.setState({ "displayHintWindow": false }) ;
+    this.setState({ "displayReplWindow": false }) ;
+  }
+  openWindow(e, type) {
+    e.stopPropagation();
+    this.setState({ [type]: true });
+  }
   render() {
     return (
-      <div className="lessonContainer">
+      <div className="lessonContainer" onClick={e => this.closeWindow()}>
           <Query query={FETCH_LESSON} variables={{ id: this.props.match.params.id }}>
             {({ loading, error, data }) => {
               if (loading) return <p>Loading...</p>;
@@ -93,30 +103,24 @@ class LessonDetail extends React.Component {
                           className="next-button">Next
                         </button>
                         <button
-                          onClick={e => { this.setState({ displayHintWindow: true })}}>
+                          onClick={e => this.openWindow(e, "displayHintWindow")}>
                           Open Hint Window
                         </button>
                         <button
-                          onClick={e => { this.setState({ displayHintWindow: false }) }}>
-                          Close Hint Window
-                        </button>
-                        <button
-                          onClick={e => { this.setState({ displayReplWindow: true }) }}>
+                          onClick={e => this.openWindow(e, "displayReplWindow")}>
                           Open Repl Window
-                        </button>
-                        <button
-                          onClick={e => { this.setState({ displayReplWindow: false }) }}>
-                          Close Repl Window
                         </button>
                       </div>
                     </div>
+                    <InstructionWindow 
+                      propsClassName={`${hintWindowClassName}`}
+                      hintText={questionCurrent.hint} />
+                    <div 
+                      className={`${replWindowClassName} repl-window`}
+                      onClick={e => e.stopPropagation()}>
+                      <Repl />
+                    </div>
                     <div className="instruction-window">
-                      <InstructionWindow 
-                        propsClassName={`${hintWindowClassName}`}
-                        hintText={questionCurrent.hint} />
-                      <div className={`${replWindowClassName} repl-window`}>
-                        <Repl />
-                      </div>
                     </div>
                   </div>
                 )

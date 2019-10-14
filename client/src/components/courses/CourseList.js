@@ -21,7 +21,11 @@ const CourseList = (props) => {
             console.log(data);
             return data.courses.map(({ _id, language, icon, description }) => (
               <div className="courseListItemContainer" key={_id} language={language}>
-                <Link className="courseListLink" to={`/courses/${language}`}>
+                <Link className="courseListLink" 
+                  to={{
+                    pathname: `/courses/${language}`,
+                    state: { id: `${_id}`}
+                  }}>
                   <div className="courseListItem">
                     <img src={process.env.PUBLIC_URL + icon} alt="language logo" />
                     <h4>{language}</h4>

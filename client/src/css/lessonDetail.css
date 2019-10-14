@@ -8,20 +8,9 @@
 .lesson-window{
   border: 1px solid red;
   padding: 10px;
+  max-width: 80vw;
 }
-.instruction-window{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-content: center;
-  border: 1px solid black;
-}
-.hint-window {
-  border: 1px solid purple;
-}
-.repl-window {
-  border: 1px solid green;
-}
+
 .answer-window{
   display: flex;
   justify-content: center;
