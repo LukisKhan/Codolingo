@@ -15,7 +15,7 @@ class ProfilePage extends React.Component {
         let userId = localStorage.getItem("userId");
 
         return(
-            <div>
+            <div className="user-profile-page">
                 <Query query={GET_USER} 
                     variables={{ id: userId }}
                     onCompleted={data => {
@@ -37,7 +37,7 @@ class ProfilePage extends React.Component {
                             let isCompleted = "";
                             let myLessons = (
                                 lessons.map( lesson => {
-                                    this.state.lessonsCompleted.includes(lesson._id) ? isCompleted = "lesson-completed" : isCompleted = "";
+                                    this.state.lessonsCompleted.includes(lesson._id) ? isCompleted = "lesson-completed" : isCompleted = "lesson-not-completed";
                                     return (
                                         <li key={lesson._id} className={`user-lesson ${isCompleted}`}>{lesson.title}</li>
                                     )})

@@ -1,3 +1,20 @@
+.user-profile-page {
+  border: 1px solid black;
+}
+
+.user-language a {
+  text-decoration: none;
+}
+
+.user-language {
+  border: 1px solid green;
+  list-style: none;
+}
+
 .lesson-completed {
   border: 2px solid gold;
+}
+
+.lesson-not-completed {
+  background-color: grey;
 }
