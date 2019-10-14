@@ -8,7 +8,7 @@ import Close from '../../assets/close.svg';
 class RegisterModal extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {email: "", password: "", name: ""};
+        this.state = {email: "", password: "", name: "", _id: ""};
     }
 
     update(field) {
@@ -32,6 +32,11 @@ class RegisterModal extends React.Component {
                     this.props.history.push("/chooseCourse");
                 }}
                 update={(client, data) => this.updateCache(client, data)}
+                refetchQueries={(data) => {
+                    console.log("refetchQueries", data);
+                    console.log(data.data.register.name);
+                    this.setState({name: data.data.register.name, _id: data.data.register._id})
+                }}
             >
                 {registerUser => (
                     <div className="authModal">

@@ -5,7 +5,7 @@ import Queries from "../../graphql/queries";
 import Logo from '../assets/codolingo-logo2.png';
 import Profile from '../../assets/profile-icon.png';
 
-const { IS_LOGGED_IN } = Queries;
+const { IS_LOGGED_IN, FETCH_USER } = Queries;
 
 class CourseHeader extends React.Component {
     constructor(props) {
@@ -37,6 +37,8 @@ class CourseHeader extends React.Component {
     }
 
     render() {
+        let authToken = localStorage.getItem("auth-token");
+
         return(
             <div className="courseHeader">
                 <img className="courseHeaderLogo" src={Logo} alt="site logo" />
@@ -45,7 +47,7 @@ class CourseHeader extends React.Component {
                 <img src={Profile} alt="profile" onClick={this.togglePopup} />
                 { this.state.profilePopup && 
                     <div className="profilePopup">
-                        <Link className="profileLink" to={'/users'}>Profile</Link>
+                        {/* <Link className="profileLink" to={'/users'}>Profile</Link> */}
                         <ApolloConsumer>
                             {client => (
                                 <Query query={IS_LOGGED_IN}>

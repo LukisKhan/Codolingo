@@ -2,6 +2,7 @@ import React from "react";
 import { Query, ApolloConsumer } from "react-apollo";
 import { Link } from "react-router-dom";
 import Queries from "../../graphql/queries";
+import CourseHeader from '../courses/CourseHeader';
 const { FETCH_LESSONS, IS_LOGGED_IN } = Queries;
 
 const LessonList = (props) => {

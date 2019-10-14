@@ -12,6 +12,7 @@ import LessonDetail from './lessons/LessonDetail';
 import CourseList from './courses/CourseList';
 import CourseDetail from './courses/CourseDetail';
 import CourseListAuth from './courses/CourseListAuth';
+import ProfilePage from './profile/user_profile';
 import Repl from './repl/repl';
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
         <Route exact path="/courses/:id" component={CourseDetail} />
         <Route exact path="/lessons/:id" component={LessonDetail} />
         <Route exact path="/courses" component={CourseList} />
+        <Route exact path="/users/:id" component={ProfilePage} />
         {/* <AuthRoute exact path="/" component={DashboardNav} routeType="auth" /> */}
         <Route path="/" component={Splash} />
         <Route path="/repl" component={Repl} />

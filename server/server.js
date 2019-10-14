@@ -20,6 +20,8 @@ mongoose
   .catch(err => console.log(err));
 
 
+app.use(express.static("server/public"))
+
 // remember we use bodyParser to parse requests into json
 app.use(bodyParser.json());
 

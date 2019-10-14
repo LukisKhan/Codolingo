@@ -11,6 +11,10 @@ const CourseSchema = new Schema({
       type: String,
       required: true
     },
+    description: {
+      type: String,
+      required: true
+    },
     lessons: [
         {
           type: Schema.Types.ObjectId,
