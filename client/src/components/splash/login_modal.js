@@ -34,9 +34,8 @@ class LoginModal extends React.Component {
                 }}
                 update={(client, data) => this.updateCache(client, data)}
                 refetchQueries={(data) => {
-                    console.log("refetchQueries", data);
-                    console.log(data.data.login.name);
-                    this.setState({name: data.data.login.name, _id: data.data.login._id})
+                    this.setState({name: data.data.login.name});
+                    localStorage.setItem("userId", data.data.login._id);
                 }}
             >
                 {loginUser => (

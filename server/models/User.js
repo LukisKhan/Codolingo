@@ -19,7 +19,29 @@ const UserSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  lessonsCompleted: {
+    type: String,
   }
 });
+
+UserSchema.statics.updateLessonsCompleted = function (userId, lessonsCompleted) {
+  const User = mongoose.model("users");
+  console.log(userId);
+  console.log(lessonsCompleted);
+  return User.findById(userId).then(user => {
+    if(user.lessonsCompleted){
+      let lessonsArray = user.lessonsCompleted.split(" ");
+      if (lessonsArray.includes(lessonsCompleted)) {
+        return user;
+      } else {
+        lessonsArray.push(lessonsCompleted);
+        user.lessonsCompleted = lessonsArray.join(" ");;
+        user.save();
+      }
+    }
+    return user;
+  });
+}
 
 module.exports = mongoose.model("users", UserSchema);

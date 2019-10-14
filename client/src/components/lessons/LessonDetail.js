@@ -1,28 +1,52 @@
 import React from "react";
-import { Query } from "react-apollo";
+import { Query, Mutation } from "react-apollo";
 import Queries from "../../graphql/queries";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import Repl from "../repl/repl";
 import InstructionWindow from "../instructionWindow/instructionWindow";
+import { UPDATE_LESSONS_COMPLETED } from "../../graphql/mutations";
 const { FETCH_LESSON } = Queries;
 
 class LessonDetail extends React.Component {
   constructor(props){
     super(props);
-    this.state = { questionIdx: 0, correctAnswer: "", incorrectAnswer: "", 
-                   displayHintWindow: false, displayReplWindow: false};
+    this.state = 
+      {  
+        questionIdx: 0, correctAnswer: "", incorrectAnswer: "", 
+        displayHintWindow: false, displayReplWindow: false,
+        answered: [], answeredCorrect: [], numQuestion: 5,
+      };
     this.closeWindow = this.closeWindow.bind(this);
     this.openWindow = this.openWindow.bind(this);
   }
   chooseAnswer(e, isCorrect, answer){
     e.stopPropagation();
+    let currentIdx = this.state.questionIdx;
     if (isCorrect){
-      console.log("Correct");
-      this.setState({correctAnswer: `> You choose: ${answer} \n> Correct!`, incorrectAnswer: ""})
+      this.setState(state => {
+        let newArry = 
+          state.answeredCorrect.includes(currentIdx) ? state.answeredCorrect : state.answeredCorrect.concat(currentIdx);
+        return {
+          correctAnswer: `> ${answer} \n> Correct!`, 
+          incorrectAnswer: "", 
+          answered: this.state.answered, 
+          answeredCorrect: newArry
+        }
+      });
     } else {
-      console.log("Try again");
-      this.setState({ incorrectAnswer: `> You choose: ${answer} \n> Sorry, try again`, correctAnswer: "" })
+      this.setState(state => {
+        let newArry =
+          state.answered.includes(currentIdx) ? state.answered : state.answered.concat(currentIdx);
+        return { 
+          incorrectAnswer: `> ${answer} \n> Sorry, try again`, 
+          correctAnswer: "", 
+          answered: newArry, 
+          answeredCorrect: this.state.answeredCorrect 
+        }
+      });
     }
+    console.log(`corrects: ${this.state.answeredCorrect}`);
+    console.log(`incorrects: ${this.state.answered}`);
   }
   goBack(){
     this.props.history.goBack();
@@ -36,6 +60,10 @@ class LessonDetail extends React.Component {
     this.setState({ [type]: true });
   }
   render() {
+    if (this.state.questionIdx >= this.state.numQuestion) {
+      localStorage.setItem('lessonId', this.props.match.params.id)
+      return <Redirect to='/lessonEnd'/>
+    }
     return (
       <div className="lessonContainer" onClick={e => this.closeWindow()}>
           <Query query={FETCH_LESSON} variables={{ id: this.props.match.params.id }}>
@@ -45,7 +73,7 @@ class LessonDetail extends React.Component {
               let questionArray = data.lesson.questions,
                 questionCurrent = questionArray[this.state.questionIdx],
                 questionExample = "", 
-                backButton,
+                backButton, nextButton,
                 hintWindowClassName = "hide-hint-window",
                 replWindowClassName = "hide-repl-window";
               if (this.state.displayHintWindow) hintWindowClassName = "display-hint-window";
@@ -53,8 +81,24 @@ class LessonDetail extends React.Component {
               if (this.state.questionIdx > 0) {
                 backButton =  (
                   <button
-                    onClick={e => { this.setState({ questionIdx: this.state.questionIdx - 1, correctAnswer: "", incorrectAnswer: "" }) }}
+                    onClick={e => { this.setState({ 
+                      questionIdx: this.state.questionIdx - 1, 
+                      correctAnswer: "", incorrectAnswer: "",
+                      answered: this.state.answered, answeredCorrect: this.state.answeredCorrect }) 
+                    }}
                     className="back-button">Back
+                  </button>
+                );
+              }
+              if (this.state.answeredCorrect.includes(this.state.questionIdx)) {
+                nextButton = (
+                  <button
+                    onClick={e => { this.setState({ 
+                      questionIdx: this.state.questionIdx + 1, 
+                      correctAnswer: "", incorrectAnswer: "",
+                      answered: this.state.answered, answeredCorrect: this.state.answeredCorrect }) 
+                    }}
+                    className="next-button">Next
                   </button>
                 );
               }
@@ -62,12 +106,21 @@ class LessonDetail extends React.Component {
               if (this.state.questionIdx < questionArray.length && questionCurrent.example){
                 questionExample = questionCurrent.example;
               }
+              //ghost code
               if (this.state.questionIdx >= questionArray.length) {
+                this.props.history.push('/lessonEnd');
                 return ( 
-                  <div className="end-of-lesson">End of lesson
-                      <button 
-                        className="end-of-lesson-button"
-                        onClick={this.goBack.bind(this)} >Back to Lessons</button>
+                  <div className="end-of-lesson">{`End of lesson. You got 
+                    ${
+                      this.state.answeredCorrect.length -
+                      this.state.answered.length
+                    } questions correct! \n 
+                    userId: ${localStorage.getItem("userId")}
+                  `}
+                    <button 
+                      className="end-of-lesson-button"
+                      onClick={this.goBack.bind(this)} >Back to Lessons
+                    </button>
                   </div>
                 )
               } else {
@@ -98,10 +151,7 @@ class LessonDetail extends React.Component {
                       </div>
                       <div className="lesson-button">
                         {backButton}
-                        <button
-                          onClick={e => { this.setState({ questionIdx: this.state.questionIdx + 1, correctAnswer: "", incorrectAnswer: "" }) }}
-                          className="next-button">Next
-                        </button>
+                        {nextButton}
                         <button
                           onClick={e => this.openWindow(e, "displayHintWindow")}>
                           Open Hint Window

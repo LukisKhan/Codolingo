@@ -7,6 +7,8 @@ const { FETCH_LESSONS, FETCH_COURSES } = Queries;
 
 class CourseDetail extends React.Component {
     render() {
+        console.log(this.props.match.params.id);
+        localStorage.setItem('language', this.props.match.params.id);
         return (
             <div >
                 <CourseHeader courseId={this.props.match.params.id} />
@@ -17,8 +19,6 @@ class CourseDetail extends React.Component {
                             {({ loading, error, data }) => {
                                 if (loading) return <p>Loading...</p>;
                                 if (error) return <p>Error</p>;
-                                console.log(this.props.match.params.id);
-                                console.log(data.courses);
                                 data.course = data.courses.filter(course => course.language === this.props.match.params.id)[0];
                                 return data.course.lessons.map(({ _id, title }) => (
                                     <li key={_id}>

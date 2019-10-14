@@ -72,6 +72,17 @@ const mutation = new GraphQLObjectType({
         return User.deleteOne({ _id: id });
       }
     },
+    //update lessons completed
+    updateLessonsCompleted: {
+      type: UserType,
+      args: {
+        userId: {type: GraphQLID},
+        lessonsCompleted: {type: GraphQLString}
+      },
+      resolve(parent, {userId, lessonsCompleted}){
+        return User.updateLessonsCompleted(userId, lessonsCompleted)
+      }
+    },
     // Courses Mutations
     newCourse: {
       type: CourseType,
