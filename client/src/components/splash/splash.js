@@ -86,7 +86,7 @@ class Splash extends React.Component {
                 </div>
                 <div className="splashPromotion">
                     <h2>Learn JavaScript, Ruby, and SQL!</h2>
-                    If you learn coding, you'll have more inherent value as a person.
+                    Gain important life skills through programming!
                     <div className="languageIcons">
                         <img src={Ruby} alt="Ruby logo" />
                         <img src={JS} alt="JavaScript logo" />

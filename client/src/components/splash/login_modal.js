@@ -78,4 +78,6 @@ class LoginModal extends React.Component {
     }
 }
 
+export const loginUser = LoginModal.state;
+
 export default withRouter(LoginModal);

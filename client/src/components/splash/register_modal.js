@@ -81,4 +81,6 @@ class RegisterModal extends React.Component {
     }
 }
 
+export const registerUser = RegisterModal.state;
+
 export default withRouter(RegisterModal);

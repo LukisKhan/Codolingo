@@ -33,7 +33,6 @@ export default {
         name
         email
         loggedIn
-        token
       }
     }
   `,
