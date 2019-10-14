@@ -7,7 +7,6 @@ const { FETCH_LESSONS, FETCH_COURSES } = Queries;
 
 class CourseDetail extends React.Component {
     render() {
-        console.log(this.props.match.params.id);
         localStorage.setItem('language', this.props.match.params.id);
         return (
             <div >

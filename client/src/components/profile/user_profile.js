@@ -25,15 +25,18 @@ class ProfilePage extends React.Component {
                     {({loading, error, data}) => {
                         if (loading) return <p>Loading...</p>;
                         if(error) console.log(error);
-                        console.log(data.user.name);
-                        return <p>{`${data.user.name}, you are making great progress!`}</p>
+                        return (
+                            <div>
+                                <h3>{`${data.user.name}, making great progress!`}</h3>
+                                <h3>Lessons:</h3>
+                            </div>
+                            )
                     }}
                 </Query>
                 <Query query={FETCH_COURSES}>
                     {({ loading, error, data }) => {
                         if (loading) return <p>Loading...</p>;
                         if (error) console.log(error);
-                        console.log(data);
                         return data.courses.map(({ language, _id, lessons }) => {
                             let isCompleted = "";
                             let myLessons = (

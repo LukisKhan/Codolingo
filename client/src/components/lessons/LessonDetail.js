@@ -73,9 +73,10 @@ class LessonDetail extends React.Component {
               let questionArray = data.lesson.questions,
                 questionCurrent = questionArray[this.state.questionIdx],
                 questionExample = "", 
-                backButton, nextButton,
                 hintWindowClassName = "hide-hint-window",
                 replWindowClassName = "hide-repl-window";
+              let backButton = <button style={{ opacity: '0' }}></button> 
+              let nextButton = <button style={{opacity:'0'}}></button>
               if (this.state.displayHintWindow) hintWindowClassName = "display-hint-window";
               if (this.state.displayReplWindow) replWindowClassName = "display-repl-window";
               if (this.state.questionIdx > 0) {
@@ -123,6 +124,7 @@ class LessonDetail extends React.Component {
                     </button>
                   </div>
                 )
+              //end of ghost code
               } else {
                 return (
                   <div className="lesson-detail-page">
@@ -150,25 +152,29 @@ class LessonDetail extends React.Component {
                         </ul>
                       </div>
                       <div className="lesson-button">
-                        {backButton}
-                        {nextButton}
-                        <button
-                          onClick={e => this.openWindow(e, "displayHintWindow")}>
-                          Open Hint Window
-                        </button>
-                        <button
-                          onClick={e => this.openWindow(e, "displayReplWindow")}>
-                          Open Repl Window
-                        </button>
+                        <div className="hint-repl-button">
+                          <button
+                            onClick={e => this.openWindow(e, "displayHintWindow")}>
+                            Open Hint Window
+                          </button>
+                          <InstructionWindow
+                            propsClassName={`${hintWindowClassName}`}
+                            hintText={questionCurrent.hint} />
+                          <button
+                            onClick={e => this.openWindow(e, "displayReplWindow")}>
+                            Open Repl Window
+                          </button>
+                          <div
+                            className={`${replWindowClassName} repl-window`}
+                            onClick={e => e.stopPropagation()}>
+                            <Repl />
+                          </div>
+                        </div>
+                        <div className="lesson-nav-bar">
+                          {backButton}
+                          {nextButton}
+                        </div>
                       </div>
-                    </div>
-                    <InstructionWindow 
-                      propsClassName={`${hintWindowClassName}`}
-                      hintText={questionCurrent.hint} />
-                    <div 
-                      className={`${replWindowClassName} repl-window`}
-                      onClick={e => e.stopPropagation()}>
-                      <Repl />
                     </div>
                     <div className="instruction-window">
                     </div>
