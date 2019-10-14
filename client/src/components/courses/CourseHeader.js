@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Query, ApolloConsumer } from "react-apollo";
 import Queries from "../../graphql/queries";
+
 import Logo from '../assets/codolingo-logo2.png';
 import Profile from '../../assets/profile-icon.png';
 
@@ -48,7 +49,8 @@ class CourseHeader extends React.Component {
                 <img src={Profile} alt="profile" onClick={this.togglePopup} />
                 { this.state.profilePopup && 
                     <div className="profilePopup">
-                        {/* <Link className="profileLink" to={'/users'}>Profile</Link> */}
+                        
+                        <a className="profileLink" href="#">Profile</a>
                         <ApolloConsumer>
                             {client => (
                                 <Query query={IS_LOGGED_IN}>
