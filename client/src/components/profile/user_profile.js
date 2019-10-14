@@ -25,7 +25,8 @@ class ProfilePage extends React.Component {
                     {({loading, error, data}) => {
                         if (loading) return <p>Loading...</p>;
                         if(error) console.log(error);
-                        return <p>Blank page</p>
+                        console.log(data.user.name);
+                        return <p>{`${data.user.name}, you are making great progress!`}</p>
                     }}
                 </Query>
                 <Query query={FETCH_COURSES}>
@@ -39,7 +40,9 @@ class ProfilePage extends React.Component {
                                 lessons.map( lesson => {
                                     this.state.lessonsCompleted.includes(lesson._id) ? isCompleted = "lesson-completed" : isCompleted = "lesson-not-completed";
                                     return (
-                                        <li key={lesson._id} className={`user-lesson ${isCompleted}`}>{lesson.title}</li>
+                                        <Link key={`${language}/${lesson._id}`} to={`/lessons/${lesson._id}`}>
+                                            <li key={lesson._id} className={`user-lesson ${isCompleted}`}>{lesson.title}</li>
+                                        </Link>
                                     )})
                             )
                             return (
