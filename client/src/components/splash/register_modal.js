@@ -7,6 +7,7 @@ import Close from '../../assets/close.svg';
 
 class RegisterModal extends React.Component {
     constructor(props) {
+        //comment
         super(props);
         this.state = {email: "", password: "", name: "", _id: ""};
     }
