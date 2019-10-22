@@ -10,6 +10,8 @@ const CourseType = new GraphQLObjectType({
     fields: () => ({
         _id: {type: GraphQLID},
         language: {type: GraphQLString},
+        icon: {type: GraphQLString},
+        description: {type: GraphQLString},
         lessons: {
           type: new GraphQLList (require("./lesson_type")),
           resolve(parentValue) {

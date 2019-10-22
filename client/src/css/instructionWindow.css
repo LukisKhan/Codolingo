@@ -1,0 +1,164 @@
+.instruction-window {
+  display: none;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-content: center;
+  border: 1px solid black; */
+}
+
+.hint-window {
+  position: absolute;
+  bottom: 12.8vw;
+  left: 3vw;
+  font-size: 20px;
+  z-index: 3;
+}
+.repl{
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  background-color: lightgoldenrodyellow;
+  color: black;
+  border-radius: 2%;
+}
+.repl-form{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 28px;
+}
+.repl-form input{
+  width: 80%;
+}
+.repl-window {
+  position: absolute;
+  bottom: 12.8vw;
+  right: 3vw;
+  font-size: 20px;
+  z-index: 3;
+  border-radius: 2%;
+}
+#enter-code-button{
+  width: 20%;
+  height: 28px;
+  background-color: lightblue;
+  margin: 0px;
+  border-radius: 2%;
+}
+#output-text {
+  text-align: left;
+  margin: 5px;
+}
+.hint-window{
+  border: 1px solid orange;
+  display: flex;
+  width: 25vw;
+  min-width: 300px;
+  color: black;
+  border-radius: 2%;
+  height: 10vw;
+  margin: 10px;
+  min-height: 175px;
+  background-color: lightgoldenrodyellow;
+}
+
+.repl-window {
+  border: 1px solid orange;
+  width: 25vw;
+  min-width: 300px;
+  height: 10vw;
+  min-height: 175px;
+  margin: 10px;
+  border-radius: 2%;
+}
+.hide-hint-window {
+  display: none;
+}
+.display-hint-window {
+  display: flex;
+}
+.hide-repl-window {
+  display: none;
+}
+
+.display-repl-window {
+  display: flex;
+}
+@media (max-width: 850px) {
+  .repl-window {
+    right: 20px;
+    bottom: 10px;
+  }
+  .example-window {
+    right: 20px;
+    bottom: 10px;
+  }
+}
+.repl{
+  width: 100%;
+  height: 100%;
+}
+button{
+  z-index: 2;
+}
+.lesson-nav-bar{
+  position: absolute;
+  bottom: 1vh;
+  left: 0vw;
+  width: 100vw;
+  height: 10vw;
+  background-color: rgb(208, 243, 205);
+  border: 0.5px solid rgb(182, 180, 180);
+  display: flex;
+  justify-content: space-between;
+}
+.lesson-nav-bar button{
+  width: 175px;
+  height: 85px;
+  margin: 2vw 10vw;
+}
+
+.next-button {
+  position: relative;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 15px;
+  background-color: rgb(113, 209, 4);
+}
+
+.next-button:hover {
+  background-color: rgb(9, 66, 9)
+}
+
+.back-button {
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 15px;
+  background-color: rgb(209, 51, 64);
+  opacity: 1;
+}
+
+.back-button:hover {
+  background-color: rgb(141, 21, 21)
+}
+
+.hint-repl-button{
+  display: flex;
+  height: 17vh;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.hint-repl-button button{
+  padding: 0px 15px;
+  font-size: 14px;
+  border-radius: 15px;
+  background-color: yellow;
+  height: 30px;
+  text-align: center;
+  vertical-align: auto;
+  margin: 0px 7vw;
+}

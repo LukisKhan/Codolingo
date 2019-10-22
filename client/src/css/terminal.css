@@ -1,13 +1,17 @@
 #terminal{
   background-color: rgb(17, 19, 19);
+  align-self: center;
   width: 35vw;
+  min-width: 380px;
   height: 25vh;
   color: white;
   margin: 10px;
   border-radius: 2%;
   contain: strict;
+  text-align: left;
   border: 1px solid black;
-  box-shadow: 5px 5px 50px black;
+  position: relative;
+  left: 31.5%;
 }
 #top-terminal-bar{
   background-color: rgb(77, 87, 87);
@@ -29,5 +33,5 @@
 }
 #incorrect-answer {
   margin-left: 10px;
-  color: darkred;
+  color: white;
 }

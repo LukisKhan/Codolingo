@@ -1,14 +1,14 @@
 import React from 'react';
 import {Mutation} from 'react-apollo';
 import {REGISTER_USER} from '../../graphql/mutations';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import Close from '../../assets/close.svg';
 
 class RegisterModal extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {email: "", password: "", name: ""};
+        this.state = {email: "", password: "", name: "", _id: ""};
     }
 
     update(field) {
@@ -19,7 +19,7 @@ class RegisterModal extends React.Component {
 
     updateCache(client, { data }) {
         client.writeData({
-          data: { isLoggedIn: data.register.loggedIn }
+            data: { isLoggedIn: data.register.loggedIn }
         });
     }
 
@@ -27,19 +27,24 @@ class RegisterModal extends React.Component {
         return(
             <Mutation mutation={REGISTER_USER}
                 onCompleted={data => {
-                    console.log(data);
                     const {token} = data.register;
                     localStorage.setItem("auth-token", token);
+                    this.props.history.push("/chooseCourse");
                 }}
                 update={(client, data) => this.updateCache(client, data)}
+                refetchQueries={(data) => {
+                    console.log("refetchQueries", data);
+                    console.log(data.data.register.name);
+                    this.setState({name: data.data.register.name, _id: data.data.register._id})
+                }}
             >
                 {registerUser => (
                     <div className="authModal">
-                        <div>
+                        <div className="closeButton">
                             <img src={Close} alt="close button" onClick={this.props.toggleRegisterModal}/>
                         </div>
                         <h3>Sign up</h3>
-                        <form className="authInputContainer"
+                        <form className="authInputForm"
                             onSubmit={e => {
                                 e.preventDefault();
                                 registerUser({
@@ -51,15 +56,15 @@ class RegisterModal extends React.Component {
                                 });
                             }}
                         >
-                            <input className="authInput" type="text" placeholder="Username"
-                                value={this.state.name} onChange={this.update("name")} />
-                            <input className="authInput" type="text" placeholder="Email"
-                                value={this.state.email} onChange={this.update("email")} />
-                            <input className="authInput" type="password" placeholder="Password"
-                                value={this.state.password} onChange={this.update("password")} />
-                            <Link to="/courses">
-                                <button className="authButton" type="submit">Sign up</button>
-                            </Link>
+                            <div className="authInputContainer">
+                                <input className="authInput" type="text" placeholder="Username"
+                                    value={this.state.name} onChange={this.update("name")} />
+                                <input className="authInput" type="text" placeholder="Email"
+                                    value={this.state.email} onChange={this.update("email")} />
+                                <input className="authInput" type="password" placeholder="Password"
+                                    value={this.state.password} onChange={this.update("password")} />
+                            </div>
+                            <button className="authButton" type="submit">Sign up</button>
                         </form>
         
                         <div className="disclaimer">
@@ -76,4 +81,6 @@ class RegisterModal extends React.Component {
     }
 }
 
-export default RegisterModal;
+export const registerUser = RegisterModal.state;
+
+export default withRouter(RegisterModal);

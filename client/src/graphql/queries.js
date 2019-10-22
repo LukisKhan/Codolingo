@@ -12,10 +12,12 @@ export default {
       courses {
         _id
         language
+        icon
+        description
         lessons {
           _id, title,
           questions {
-            _id, prompt, example,
+            _id, prompt, example, hint,
             answers {
               _id, answer, isCorrect
             }
@@ -24,14 +26,58 @@ export default {
       }
     }
   `,
+  FETCH_USERS: gql `
+    query FetchUsers {
+      users {
+        _id
+        name
+        email
+        loggedIn
+      }
+    }
+  `,
+  FETCH_USER: gql `
+    query FetchUser($token:STRING!) {
+      course(token: $token) {
+        _id
+        name
+        email
+        loggedIn
+      }
+    }
+  `,
+  GET_USER: gql`
+    query GetUser($id:ID!) {
+      user(_id: $id) {
+        _id
+        name
+        email
+        loggedIn
+        lessonsCompleted
+      }
+    }
+  `,
   FETCH_COURSE: gql`
     query FetchCourse($id:ID!) {
       course(_id: $id) {
         _id
         language
+        icon
+        description
         lessons {
-          title
           _id
+          title
+          questions {
+            _id
+            prompt
+            example
+            hint
+            answers {
+              _id
+              answer
+              isCorrect
+            }
+          }
         }
       }
     }
@@ -84,6 +130,7 @@ export default {
           prompt
           example
           _id
+          hint
           answers {
             answer
             isCorrect

@@ -1,33 +1,48 @@
+.lesson-list-page{
+  display: flex;
+  justify-content: center;
+}
+
 .lesson-list {
   text-decoration: none;
-  width: 40vw;
+  width: 50vw;
   border: 1px solid green;
-  margin: 10px;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
-.next-button{
-  padding: 15px;
-  font-size: 20px;
-  font-weight: bold;
-  margin: 20px;
-  background-color: green;
+@media (max-width: 810px) {
+  .lesson-list {
+    width: 70vw;
+    margin-left: 10%;
+  }
 }
-.next-button:hover{
-  background-color: rgb(9, 66, 9)
+@media (max-width: 600px) {
+  .lesson-list {
+    width: 100%;
+    margin-left: 0;
+    border-radius: 0;
+  }
+}
+.courseTitle {
+  text-align: center;
+  color: #2f3535;
+  font-size: 35px;
+  font-weight: 1000;
+  font-family: din-round, sans-serif;
 }
 .lesson-list li {
   font-size: 30px;
   list-style-type: none;
   width: 25vw;
-  height: 25vw;
+  height: 15vw;
   display: flex;
   align-items: center;
 }
 .lesson-list li a {
-  width: 50%;
-  height: 50%;
-  
+  width: 100%;
+  height: 100%;
 }
 
 /* unvisited link */
@@ -37,7 +52,7 @@
 }
 /* visited link */
 .lesson-list li a:visited {
-  color: grey;
+  color: rgb(67, 197, 197);
 }
 /* mouse over link */
 .lesson-list li a:hover {
@@ -49,32 +64,39 @@
 }
 .line {
   width: 0px;
-  height: 13vw;
+  height: 9.3vw;
   position: relative;
-  bottom: 12.5vw;
-  right: 6.5vw;
-  border-right: 2px dashed black;
+  bottom: 7.4vw;
+  right: 4.7vw;
+  border-left: 1px solid grey;
 }
 
 .lesson-list li:first-child div[class="line"] {
   display: none;
 }
-
-.question-title {
-  position: relative;
+.lesson-link{
   display: flex;
+  justify-content: flex-start; 
+  width: 100%;
+  height: 100%;
   align-items: center;
-  left: 13vw;
 }
 
-/* sphere-looking design */
+.question-title {
+  display: flex;
+  width: 15vw;
+  height: 5ww;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+  font-size: 2.5vw;
+}
 
 .ball {
-  position: relative;
-  bottom: 15.3vh;
-  right: .7vw;
-  width: 12vw;
-  height: 12vw;
+  width: 6vw;
+  height: 6vw;
+  padding-left: 1vw;
   margin: 1vmin;
   transform-style: preserve-3d;
   transform: rotateX(-5deg);
@@ -94,8 +116,8 @@
   position: absolute;
   top: 0px;
   left: 0px;
-  width: 12vw;
-  height: 12vw;
+  width: 6vw;
+  height: 6vw;
 }
 
 .moving {
@@ -104,11 +126,7 @@
   animation: rot 10s linear infinite;
 }
 
-.gridplane {
-  width: 20vw;
-  height: 20vw;
-  border-radius: 50%;
-}
+
 
 .clip {
   border-radius: 50%;
@@ -185,14 +203,30 @@
 
 .shade {
   position: relative;
-  top: -150%;
-  left: -150%;
-  width: 400%;
-  height: 400%;
-  background: radial-gradient(at 50% 50%, white, black, grey, black, black);
-  animation: highlightanim 7s linear infinite;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(at 10% 10%, white, rgb(102, 192, 129), rgb(223, 230, 218), blue);
 }
 
+.clip:hover{
+  animation: expand 0.75s linear 2;
+}
 .shade:hover{
-   background: radial-gradient(at 50% 50%, rgb(157, 150, 219), rgb(5, 5, 77), rgb(39, 21, 199), rgb(5,5,77), rgb(5,5,77));
+  background: radial-gradient(at 10% 10%, white, rgb(9, 161, 24), rgb(195, 204, 189), blue);
+}
+@keyframes expand {
+  0.00% {
+    transform: scale(1,1);
+  }
+  33.33%{
+    transform: matrix(1.1, 0.05, 0.05, 1.1, 0, 0)
+  }
+  66.66% {
+    transform: matrix(1.1, -0.05, -0.05, 1.1, 0, 0)
+  }
+  100%{
+    transform: scale(1,1);
+  }
 }

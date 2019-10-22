@@ -2,11 +2,12 @@ import React from "react";
 import { Query, ApolloConsumer } from "react-apollo";
 import { Link } from "react-router-dom";
 import Queries from "../../graphql/queries";
+import CourseHeader from '../courses/CourseHeader';
 const { FETCH_LESSONS, IS_LOGGED_IN } = Queries;
 
 const LessonList = (props) => {
   return (
-    <div>
+    <div >
       <Link to="/courses">Choose a new language</Link>
       <ApolloConsumer>
           {client => (
@@ -30,6 +31,7 @@ const LessonList = (props) => {
             </Query>
           )}
         </ApolloConsumer>
+      <div >
       <ul className="lesson-list">
         <Query query={FETCH_LESSONS}>
           {({ loading, error, data }) => {
@@ -41,12 +43,7 @@ const LessonList = (props) => {
                   <h4 className="question-title">{title}</h4>
                   <div className='ball'>
                     <div className='layer moving'>
-                      <div className='layer gridplane xline'></div>
-                      <div className='layer gridplane xline2'></div>
-                      <div className='layer gridplane yline'></div>
-                      <div className='layer gridplane zline'></div>
-                      <div className='layer gridplane laser'></div>
-                      <div className='layer gridplane laser2'></div>
+                      <div className='layer'></div>
                     </div>
                     <div className='layer clip'>
                       <div className='shade'>
@@ -61,6 +58,7 @@ const LessonList = (props) => {
           }}
         </Query>
       </ul>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,52 @@
+.lesson-detail-page{
+  display: flex;
+  justify-content: space-evenly;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(237, 248, 252);
+}
+.lesson-window{
+  padding: 10px;
+  width: 100vw;
+  text-align: center;
+  justify-content: center;
+}
+
+.answer-window{
+  display: flex;
+  justify-content: center;
+}
+.answer-choice-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 0px;
+  
+}
+.answer-choice {
+  width: fit-content;
+  height: fit-content;
+  border: 1.5px solid grey;
+  border-bottom: 3px solid grey;
+  border-radius: 10%;
+  margin: 5px;
+  padding: 20px 10px;
+  font-size: 24px;
+  list-style: none;
+}
+.answer-choice:hover{
+  border: 1.5px solid blue;
+  border-bottom: 3px solid blue;
+  background-color: lightblue;
+}
+.answer-text {
+  margin: 5px 10px;
+}
+.end-of-lesson-button{
+  background-color: rgb(141, 21, 21);
+  width: 20vw;
+  height: 12vw;
+  border-radius: 5%;
+  margin: 30vw;
+  cursor: pointer;
+}

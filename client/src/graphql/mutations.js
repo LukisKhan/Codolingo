@@ -4,7 +4,10 @@ export const LOGIN_USER = gql`
   mutation LoginUser($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       token
+      _id
+      name
       loggedIn
+      _id
     }
   }
 `;
@@ -23,6 +26,16 @@ export const REGISTER_USER = gql`
       email
       token
       loggedIn
+    }
+  }
+`;
+
+export const UPDATE_LESSONS_COMPLETED = gql`
+  mutation UpdateLessonsCompleted($userId: ID!, $lessonsCompleted: String!){
+    updateLessonsCompleted(userId: $userId, lessonsCompleted: $lessonsCompleted){
+      _id
+      lessonsCompleted
+      name
     }
   }
 `;
