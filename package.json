@@ -9,7 +9,7 @@
     "client-install": "npm install --prefix client",
     "client": "npm start --prefix client",
     "server": "nodemon index.js",
-    "start": "node index.js --prefix client"
+    "start": "node index.js --prefix client/src"
   },
   "repository": {
     "type": "git",
