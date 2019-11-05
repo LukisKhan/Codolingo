@@ -12,7 +12,24 @@
 ## Overview and Features
 A practice platform for aspiring programmers focusing on the fundamentals of Ruby, JavaScript, and SQL. Registered users can practice their skills, working through progressively more difficult lessons that build on one another. The responsive interface will notify users of incorrect answers and hints are offered to provide further insight. This project was inspired by Duolingo for its expressive UI and content delivery network. 
 
-![Codolingo-Lessons][screen2]
+### User Auth
+User credentials are hashed and salted using BCrypt and verified using JSON Web Tokens. Tokens retrieved from the mutation are decoded and matched with the database asyncronously. 
+```javascript
+const verifyUser = async data => {
+  try {
+    const { token } = data;
+    const decoded = jwt.verify(token, keys.secretOrKey);
+    const { id } = decoded;
+    const loggedIn = await User.findById(id).then(user => {
+      return user ? true : false;
+    });
+
+    return { loggedIn };
+  } catch (err) {
+    return { loggedIn: false };
+  }
+};
+```
 
 ### Database Connectivity
 The Database is tailor-made with all data relationships, allowing the frontend components to fetch data seamlessly. The QuestionType serves as the lynchpin of the database, connecting the lessons and the multitude of answers, ultimately providing an easily scalable product.
