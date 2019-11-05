@@ -1,5 +1,5 @@
 # Codolingo
- [Codolingo live](https://codolingo.herokuapp.com/)
+ [Codolingo Live](https://codolingo.herokuapp.com/)
 
 ## Architecture and Technologies
 * [GraphQL](https://www.apollographql.com/)
