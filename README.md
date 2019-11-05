@@ -77,6 +77,8 @@ QuestionSchema.statics.updateQuestion = function (questionId, prompt, example, h
 }
 ```
 
+![Codolingo-Demo][screen2]
+
 ## Future Plans
 * Upgradeable accounts utilizing achievements and rewards.
 * More expansive curriculum implementing REPL functionality.
