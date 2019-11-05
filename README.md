@@ -7,12 +7,16 @@
 * [React](https://reactjs.org/)
 * [Apollo](https://www.apollographql.com/)
 
+![Codolingo-Splash][screen1]
+
 ## Overview and Features
-Inspired by Duolingo. Learn coding without a keyboard or setup, anywhere
-Duolingo for coding
+A practice platform for aspiring programmers focusing on the fundamentals of Ruby, JavaScript, and SQL. Registered users can practice their skills, working through progressively more difficult lessons that build on one another. The responsive interface will notify users of incorrect answers and hints are offered to provide further insight. This project was inspired by Duolingo for its expressive UI and content delivery network. 
+
+![Codolingo-Lessons][screen2]
 
 ### Database Connectivity
-The Database is tailor-made with all data relationships, allowing the frontend components to fetch data seamlessly. The QuestionType served as the lynchpin of the database, connecting the lessons with the multitude of answers.
+The Database is tailor-made with all data relationships, allowing the frontend components to fetch data seamlessly. The QuestionType serves as the lynchpin of the database, connecting the lessons and the multitude of answers, ultimately providing an easily scalable product.
+
 ```javascript
   const QuestionType = new GraphQLObjectType({
     name: "QuestionType",
@@ -39,18 +43,27 @@ The Database is tailor-made with all data relationships, allowing the frontend c
   })
 ```
 
-## FUNCTIONALITY AND MVP
-User Profiles 
-Question, Answers 
-Lessons / Courses 
-Stats and Goals 
-REPL 
-Subscription  
-Languages: Ruby, JS, Python, SQL/GraphQL 
-Semi-bonus: Security risk for REPL, course builder UI vs seeding
-Bonuses: Random questions, increasing difficulty, compare languages
+Questions are fully mutable, allowing for greater flexibility when devloping a curriculum.
+```javascript
+QuestionSchema.statics.updateQuestion = function (questionId, prompt, example, hint) {
+  const Question = mongoose.model("questions");
+
+  return Question.findById(questionId).then(question => {
+    if (question.prompt || question.example || question.hint) {
+      question.prompt = prompt;
+      question.example = example;
+      question.hint = hint;
+
+      question.save().then(question => question);
+    }
+  })
+}
+```
 
 ## Future Plans
 * Upgradeable accounts utilizing achievements and rewards.
 * More expansive curriculum implementing REPL functionality.
 * Courses convering additional languages (Python, Swift).
+
+[screen1]: https://github.com/LukisKhan/Codolingo/blob/master/wiki/screen1.png
+[screen2]: https://github.com/LukisKhan/Codolingo/blob/master/wiki/screen2.png
